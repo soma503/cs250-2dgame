@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rfimmyrf2ulg"]
+
+[ext_resource type="Texture2D" uid="uid://s5o5cc3fk13r" path="res://assets/Photo Feb 07 2025, 11 47 25 AM.png" id="1_xlvqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07w5d"]
+size = Vector2(200.5, 36)
+
+[node name="world" type="CollisionShape2D"]
+position = Vector2(460, 492)
+shape = SubResource("RectangleShape2D_07w5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -11)
+scale = Vector2(0.140015, 0.137085)
+texture = ExtResource("1_xlvqr")
