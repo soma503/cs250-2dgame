@@ -1,34 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://cl16vlt2e8bo4"]
+[gd_scene load_steps=6 format=3 uid="uid://cjmjm576tv8rh"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_2q5xd"]
-[ext_resource type="Texture2D" uid="uid://cnw7pyygj24ly" path="res://assets/Photo Feb 07 2025, 10 51 15 AM.png" id="2_n8cio"]
+[ext_resource type="Script" path="res://player.gd" id="1_0eovg"]
+[ext_resource type="Texture2D" uid="uid://bjhxfeudrkq3x" path="res://icon.svg" id="2_3wpy3"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nnwlw"]
-radius = 11.0
-height = 54.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
+size = Vector2(137.5, 130.5)
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(11, 10)
-script = ExtResource("1_2q5xd")
+[sub_resource type="QuadMesh" id="QuadMesh_sdkl0"]
+size = Vector2(1000, 100)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_nnwlw")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvkwx"]
+size = Vector2(1004, 102)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
-zoom = Vector2(3, 3)
+[node name="Game" type="Node2D"]
 
-[node name="Skeleton" type="Node2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(592, 147)
+script = ExtResource("1_0eovg")
 
-[node name="body" type="Sprite2D" parent="Skeleton"]
-position = Vector2(2, -1)
-scale = Vector2(0.0314941, 0.0314941)
-texture = ExtResource("2_n8cio")
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-1, 0)
+texture = ExtResource("2_3wpy3")
 
-[node name="Nae" type="Label" parent="Skeleton"]
-offset_left = -35.0
-offset_top = -60.0
-offset_right = 42.0
-offset_bottom = -37.0
-text = "Character"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_7bujn")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+position = Vector2(587, 490)
+mesh = SubResource("QuadMesh_sdkl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(588, 489)
+shape = SubResource("RectangleShape2D_yvkwx")
