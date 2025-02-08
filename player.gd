@@ -9,10 +9,8 @@ var has_double_jump = true
 const JUMP_FORCE = 600
 
 #dash
-const DASH_SPEED = 900
-@onready var dash_timer = $DashTimer
-var dashing = false
-var can_dash = true
+const DASH_SPEED = 1200
+@onready var dash = $Dash
 var dash_duration = 0.2	
 
 func _process(delta):
@@ -27,16 +25,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		_try_jump()
 	
-	if Input.is_action_just_pressed("dash") and can_dash:
-		dashing = true
-		can_dash = false
-		dash_timer.wait_time = dash_duration
-		dash_timer.start()
-		
-		
-		
+	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing(): 
+		dash.start_dash(dash_duration)
 	
-	if dashing:
+	if dash.is_dashing():
 		velocity.x =direction.x * DASH_SPEED
 	else:
 		velocity.x = direction.x * SPEED #move horizontally
@@ -51,7 +43,3 @@ func _try_jump():
 		if has_double_jump: 
 			velocity.y = -JUMP_FORCE
 			has_double_jump = false
-
-func _on_dash_timer_timeout() -> void:
-	dashing = false
-	can_dash = true

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=6 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0eovg"]
+[ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://dash.tscn" id="2_bnniu"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_10rgj"]
 size = Vector2(100, 100)
@@ -28,5 +29,7 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_xa7e4")
+
+[node name="Dash" parent="." instance=ExtResource("2_bnniu")]
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
