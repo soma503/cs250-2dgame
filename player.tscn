@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=5 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0eovg"]
 
@@ -8,41 +8,25 @@ size = Vector2(100, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
 size = Vector2(100, 100)
 
-[sub_resource type="QuadMesh" id="QuadMesh_sdkl0"]
-size = Vector2(1000, 100)
+[sub_resource type="SpriteFrames" id="SpriteFrames_xa7e4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvkwx"]
-size = Vector2(1004, 102)
-
-[node name="Game" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(592, 147)
 script = ExtResource("1_0eovg")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
 texture = SubResource("PlaceholderTexture2D_10rgj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7bujn")
 
-[node name="DashTimer" type="Timer" parent="Player"]
-wait_time = 0.2
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
 
-[node name="DashAgainTimer" type="Timer" parent="Player"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+sprite_frames = SubResource("SpriteFrames_xa7e4")
 
-[node name="Platform" type="StaticBody2D" parent="."]
-position = Vector2(554, 545)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
-position = Vector2(0, 1)
-mesh = SubResource("QuadMesh_sdkl0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_yvkwx")
-
-[connection signal="timeout" from="Player/DashTimer" to="Player" method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="Player/DashAgainTimer" to="Player" method="_on_dash_again_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

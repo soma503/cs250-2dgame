@@ -1,14 +1,19 @@
 extends CharacterBody2D
 
 var direction: Vector2 = Vector2.ZERO
-var has_double_jump = true
 const GRAVITY = 30
 const SPEED = 300.0
+
+#jump
+var has_double_jump = true
 const JUMP_FORCE = 600
 
+#dash
 const DASH_SPEED = 900
+@onready var dash_timer = $DashTimer
 var dashing = false
 var can_dash = true
+var dash_duration = 0.2	
 
 func _process(delta):
 	direction.x = Input.get_axis("left", "right")
@@ -25,8 +30,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dash") and can_dash:
 		dashing = true
 		can_dash = false
-		$DashTimer.start()
-		$DashAgainTimer.start()
+		dash_timer.wait_time = dash_duration
+		dash_timer.start()
+		
+		
+		
 	
 	if dashing:
 		velocity.x =direction.x * DASH_SPEED
@@ -46,6 +54,4 @@ func _try_jump():
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
-	
-func _on_dash_again_timer_timeout() -> void:
-	can_dash = true  
+	can_dash = true
