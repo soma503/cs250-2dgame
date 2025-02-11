@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbjhojx40kmwq"]
+
+[ext_resource type="Script" path="res://coincollect.gd" id="1_feoxo"]
+[ext_resource type="PackedScene" uid="uid://bryxlnuoo8lmk" path="res://coin.tscn" id="2_yv6u1"]
+
+[node name="coincollect" type="Node"]
+script = ExtResource("1_feoxo")
+
+[node name="coin" parent="." instance=ExtResource("2_yv6u1")]
+
+[connection signal="area_entered" from="coin" to="." method="_on_coin_area_entered"]

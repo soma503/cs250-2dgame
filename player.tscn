@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=9 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://dash.tscn" id="2_bnniu"]
+[ext_resource type="PackedScene" uid="uid://bbjhojx40kmwq" path="res://coincollect.tscn" id="2_lyvly"]
+[ext_resource type="PackedScene" uid="uid://bryxlnuoo8lmk" path="res://coin.tscn" id="4_iqp58"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
+size = Vector2(50, 50)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_10rgj"]
 size = Vector2(50, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
-size = Vector2(50, 50)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdyjm"]
+size = Vector2(49, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptswn"]
 
@@ -15,13 +20,21 @@ size = Vector2(50, 50)
 position = Vector2(592, 147)
 script = ExtResource("1_0eovg")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_7bujn")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
 texture = SubResource("PlaceholderTexture2D_10rgj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_7bujn")
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_wdyjm")
+
+[node name="coincollect" parent="Area2D" instance=ExtResource("2_lyvly")]
 
 [node name="DashTimer" type="Timer" parent="."]
 one_shot = true
@@ -34,4 +47,16 @@ sprite_frames = SubResource("SpriteFrames_ptswn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="coins" type="Label" parent="Camera2D"]
+unique_name_in_owner = true
+offset_left = -527.0
+offset_top = -315.0
+offset_right = -392.0
+offset_bottom = -277.0
+text = "x 0"
+
+[node name="coin" parent="Camera2D" instance=ExtResource("4_iqp58")]
+position = Vector2(-595, 24)
+
+[connection signal="area_entered" from="Area2D" to="Area2D/coincollect" method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
