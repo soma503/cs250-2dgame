@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=7 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://src/player/abilities/dash.tscn" id="2_bnniu"]
+[ext_resource type="PackedScene" uid="uid://0bb1s66s44e2" path="res://src/level/objects/coin_ex.tscn" id="2_dngr6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yprup"]
+radius = 30.0
+height = 66.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_10rgj"]
 size = Vector2(50, 50)
@@ -13,14 +18,31 @@ size = Vector2(50, 50)
 position = Vector2(592, 147)
 script = ExtResource("1_0eovg")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_yprup")
+
+[node name="CoinEx" parent="Area2D" instance=ExtResource("2_dngr6")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
 texture = SubResource("PlaceholderTexture2D_10rgj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_7bujn")
 
 [node name="Dash" parent="." instance=ExtResource("2_bnniu")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="coins" type="Label" parent="Camera2D"]
+unique_name_in_owner = true
+offset_left = -560.0
+offset_top = -303.0
+offset_right = -507.0
+offset_bottom = -280.0
+text = "Coin: 0"
+
+[connection signal="area_entered" from="Area2D" to="Area2D/CoinEx" method="_on_area_2d_area_entered"]
