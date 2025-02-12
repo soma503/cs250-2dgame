@@ -11,6 +11,10 @@ const DOUBLE_JUMP_FORCE = 900
 
 #dash
 const DASH_SPEED = 1200
+const DOUBLE_TAP_DELAY = 1000 #in miliseconds
+var last_right_tap_time  = 0
+var last_left_tap_time = 0
+var run_tap_interval = 5.00
 @onready var dash = $Dash
 var dash_duration = 0.2	
 
@@ -28,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump"):
 		_try_jump()
-	
+			
 	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing(): 
 		dash.start_dash(dash_duration)
 	

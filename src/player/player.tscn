@@ -1,15 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=5 format=3 uid="uid://cjmjm576tv8rh"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_0eovg"]
-[ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://dash.tscn" id="2_bnniu"]
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_0eovg"]
+[ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://src/player/abilities/dash.tscn" id="2_bnniu"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_10rgj"]
 size = Vector2(50, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
 size = Vector2(50, 50)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ptswn"]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(592, 147)
@@ -23,15 +21,6 @@ texture = SubResource("PlaceholderTexture2D_10rgj")
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_7bujn")
 
-[node name="DashTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, 0)
-sprite_frames = SubResource("SpriteFrames_ptswn")
-
 [node name="Dash" parent="." instance=ExtResource("2_bnniu")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
