@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dba1ixatlm7ak"]
+
+[ext_resource type="Script" path="res://src/player/abilities/health.gd" id="1_48tum"]
+
+[node name="health" type="Node"]
+script = ExtResource("1_48tum")
+
+[node name="invinDelay" type="Timer" parent="."]
+
+[node name="invinTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="invinDelay" to="." method="_on_invin_delay_timeout"]
+[connection signal="timeout" from="invinTimer" to="." method="_on_health_timer_timeout"]

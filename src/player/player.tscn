@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=6 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://src/player/abilities/dash.tscn" id="2_bnniu"]
+[ext_resource type="PackedScene" uid="uid://coluexsscex40" path="res://src/player/invincibility.tscn" id="3_hhsew"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_10rgj"]
 size = Vector2(50, 50)
@@ -23,7 +24,13 @@ shape = SubResource("RectangleShape2D_7bujn")
 
 [node name="Dash" parent="." instance=ExtResource("2_bnniu")]
 
+[node name="Invincibility" parent="." instance=ExtResource("3_hhsew")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = -700
+limit_right = 8500
+limit_bottom = 700
 
 [node name="Coins" type="Label" parent="Camera2D"]
 offset_left = -20.0
@@ -33,3 +40,11 @@ offset_bottom = -32.0
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="Camera2D"]
+unique_name_in_owner = true
+offset_left = -41.0
+offset_top = -79.0
+offset_right = 19.0
+offset_bottom = -56.0
+text = "Health: 3"

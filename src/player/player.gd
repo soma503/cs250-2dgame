@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 var direction: Vector2 = Vector2.ZERO
 const GRAVITY = 30
-const SPEED = 300.0
+const SPEED = 375.0
 
 #jump
 var has_double_jump = true
-const JUMP_FORCE = 600
+const JUMP_FORCE = 700
 const DOUBLE_JUMP_FORCE = 900
 @onready var double_jump = $DoubleJump
 #dash
@@ -18,6 +18,9 @@ var run_tap_interval = 5.00
 @onready var dash = $Dash
 var dash_duration = 0.2	
 
+#invincibility
+@onready var invin = $Invincibility
+
 #camera
 @onready var camera := $Camera2D as Camera2D
 
@@ -26,6 +29,7 @@ func _process(delta):
 	
 	#COINS
 	$"Camera2D/Coins".text = str(GameManager.coins)
+	$"%Health".text= "Health: " + str(GameManager.health)
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
@@ -43,8 +47,17 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * DASH_SPEED
 	else:
 		velocity.x = direction.x * SPEED #move horizontally
-		
+	
 	move_and_slide()
+	
+func take_damage( damage ):
+	"""
+	if !invin.isInvincible() and !invincible.isOnDelay():
+	"""
+	if !invin.isInvincible() and invin.can_be_hit:
+		GameManager.health -= damage
+		if !invin.isOnDelay():
+			invin.startInvincible()
 
 func _try_jump():
 	if is_on_floor(): #if player is on the floor, js jump
@@ -54,3 +67,4 @@ func _try_jump():
 	elif has_double_jump: 
 		velocity.y = -DOUBLE_JUMP_FORCE
 		has_double_jump = false
+		

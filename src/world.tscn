@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr0omx3lp2m48"]
+[gd_scene load_steps=3 format=3 uid="uid://cu2bjuijmk4ff"]
 
 [ext_resource type="PackedScene" uid="uid://cjmjm576tv8rh" path="res://src/player/player.tscn" id="1_50hsk"]
 [ext_resource type="PackedScene" uid="uid://buhspr458c21v" path="res://src/level/level.tscn" id="2_a4f4e"]
@@ -6,5 +6,6 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_50hsk")]
+position = Vector2(226, 590)
 
 [node name="Level" parent="." instance=ExtResource("2_a4f4e")]

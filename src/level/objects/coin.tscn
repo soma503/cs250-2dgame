@@ -22,7 +22,6 @@ scale = Vector2(0.0324675, 0.0362319)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 position = Vector2(-0.8, -1.2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fnh4c")
 
 [connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
