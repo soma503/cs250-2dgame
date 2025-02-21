@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://src/player/abilities/dash.tscn" id="2_bnniu"]
-[ext_resource type="PackedScene" uid="uid://coluexsscex40" path="res://src/player/invincibility.tscn" id="3_hhsew"]
+[ext_resource type="PackedScene" uid="uid://ph04w534csn" path="res://src/player/invincibility.tscn" id="3_hhsew"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_10rgj"]
 size = Vector2(50, 50)

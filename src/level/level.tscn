@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dfeju83ftmt7" path="res://src/level/obstacles/platform.tscn" id="1_n53je"]
 [ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://src/level/objects/coin.tscn" id="2_a445y"]
-[ext_resource type="PackedScene" uid="uid://ckk070yh21syy" path="res://src/level/obstacles/platformShort.tscn" id="2_lc05k"]
-[ext_resource type="PackedScene" uid="uid://bkftx1e8me27k" path="res://src/level/obstacles/floor.tscn" id="3_rko0a"]
-[ext_resource type="PackedScene" uid="uid://bc6fsgulxdyur" path="res://src/level/obstacles/wall.tscn" id="4_c5loc"]
-[ext_resource type="PackedScene" uid="uid://bmwi1lbnc2ctw" path="res://src/level/obstacles/spike.tscn" id="6_4s0yy"]
+[ext_resource type="PackedScene" path="res://src/level/obstacles/platformShort.tscn" id="2_lc05k"]
+[ext_resource type="PackedScene" path="res://src/level/obstacles/floor.tscn" id="3_rko0a"]
+[ext_resource type="PackedScene" path="res://src/level/obstacles/wall.tscn" id="4_c5loc"]
+[ext_resource type="PackedScene" uid="uid://c816wdwqbxuq6" path="res://src/level/obstacles/spike.tscn" id="6_4s0yy"]
 
 [node name="Level1pt1" type="Node2D"]
 

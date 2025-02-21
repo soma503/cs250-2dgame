@@ -51,12 +51,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func take_damage( damage ):
-	"""
-	if !invin.isInvincible() and !invincible.isOnDelay():
-	"""
-	if !invin.isInvincible() and invin.can_be_hit:
+	if !invin.isInvincible(): #first checks if invincible and can_be_hit
 		GameManager.health -= damage
-		if !invin.isOnDelay():
+		if invin.can_go_invincible: #in order for invincibility to begin again, invin must not be on delay.
 			invin.startInvincible()
 
 func _try_jump():
