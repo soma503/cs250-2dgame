@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var flash_animation: AnimationPlayer = $Sprite2D/FlashAnimation
 
 var direction: Vector2 = Vector2.ZERO
 const GRAVITY = 30
@@ -47,14 +48,18 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction.x * DASH_SPEED
 	else:
 		velocity.x = direction.x * SPEED #move horizontally
+		
+	if invin.isInvincible():
+		flash_animation.play()
 	
 	move_and_slide()
 	
 func take_damage( damage ):
 	if !invin.isInvincible(): #first checks if invincible and can_be_hit
 		GameManager.health -= damage
-		if invin.can_go_invincible: #in order for invincibility to begin again, invin must not be on delay.
-			invin.startInvincible()
+		invin.startInvincible()
+		#if invin.can_go_invincible: #in order for invincibility to begin again, invin must not be on delay.
+			#invin.startInvincible()
 
 func _try_jump():
 	if is_on_floor(): #if player is on the floor, js jump
