@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyyduv1kpj3xm"]
+
+[ext_resource type="Script" path="res://death.gd" id="1_y1e07"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fauqk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_avs7s"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lbuuc"]
+
+[node name="death" type="CanvasLayer"]
+script = ExtResource("1_y1e07")
+
+[node name="RichTextLabel" type="Label" parent="."]
+offset_left = 544.0
+offset_top = 281.0
+offset_right = 624.0
+offset_bottom = 326.0
+theme_override_font_sizes/font_size = 9
+text = "You Died!
+"
+label_settings = SubResource("LabelSettings_fauqk")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.658824, 0.427451, 0.698039, 1)
+z_index = -10
+material = SubResource("CanvasItemMaterial_avs7s")
+offset_left = 75.0
+offset_top = 53.0
+offset_right = 1082.0
+offset_bottom = 581.0
+texture = SubResource("CanvasTexture_lbuuc")
+
+[node name="RetryButton" type="Button" parent="."]
+top_level = true
+z_index = 9
+offset_left = 486.0
+offset_top = 349.0
+offset_right = 677.0
+offset_bottom = 406.0
+text = "RETRY"
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_button_pressed"]

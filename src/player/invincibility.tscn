@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://ph04w534csn"]
+[gd_scene load_steps=2 format=3 uid="uid://coluexsscex40"]
 
 [ext_resource type="Script" path="res://src/player/invincibility.gd" id="1_xjsa3"]
 

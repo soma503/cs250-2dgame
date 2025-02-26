@@ -18,6 +18,8 @@ var last_left_tap_time = 0
 var run_tap_interval = 5.00
 @onready var dash = $Dash
 var dash_duration = 0.2	
+#death
+@onready var death = $death
 
 #invincibility
 @onready var invin = $Invincibility
@@ -55,7 +57,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func take_damage( damage ):
-	if !invin.isInvincible(): #first checks if invincible and can_be_hit
+	if !invin.isInvincible() and GameManager.health <= 1:
+		GameManager.health -= damage
+		death.died()
+	elif !invin.isInvincible() and GameManager.health > 0: #first checks if invincible and can_be_hit
 		GameManager.health -= damage
 		invin.startInvincible()
 		#if invin.can_go_invincible: #in order for invincibility to begin again, invin must not be on delay.
@@ -69,4 +74,3 @@ func _try_jump():
 	elif has_double_jump: 
 		velocity.y = -DOUBLE_JUMP_FORCE
 		has_double_jump = false
-		
