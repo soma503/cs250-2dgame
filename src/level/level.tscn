@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://buhspr458c21v"]
+[gd_scene load_steps=4 format=3 uid="uid://buhspr458c21v"]
 
 [ext_resource type="PackedScene" uid="uid://dfeju83ftmt7" path="res://src/level/obstacles/platform.tscn" id="1_n53je"]
-[ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://src/level/objects/coin.tscn" id="2_a445y"]
+[ext_resource type="PackedScene" uid="uid://c4e8y1wqgte18" path="res://src/level/objects/coin.tscn" id="2_a445y"]
+[ext_resource type="PackedScene" uid="uid://ce8xupmvsi30o" path="res://lvlonetilemap.tscn" id="3_h320i"]
 
 [node name="Level" type="Node2D"]
 
@@ -44,3 +45,7 @@ position = Vector2(1612, 765)
 
 [node name="Coin6" parent="Node" instance=ExtResource("2_a445y")]
 position = Vector2(1541, 766)
+
+[node name="lvlonetilemap" parent="." instance=ExtResource("3_h320i")]
+position = Vector2(1072, 1026)
+scale = Vector2(2, 2)
