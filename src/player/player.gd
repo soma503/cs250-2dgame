@@ -19,7 +19,7 @@ var run_tap_interval = 5.00
 @onready var dash = $Dash
 var dash_duration = 0.2	
 #death
-@onready var death = $death
+@onready var PopUp = $PopUp
 
 #invincibility
 @onready var invin = $Invincibility
@@ -35,32 +35,36 @@ func _process(delta):
 	$"%Health".text= "Health: " + str(GameManager.health)
 
 func _physics_process(delta: float) -> void:
-	if !is_on_floor():
-		velocity.y += GRAVITY
-		if velocity.y > 1000:
-			velocity.y = 1000
+	#can only move if death screen is not up
+	if PopUp.can_move:
+		if Input.is_action_just_pressed("menu"):
+			PopUp.pause()
+		if !is_on_floor():
+			velocity.y += GRAVITY
+			if velocity.y > 1000:
+				velocity.y = 1000
 	
-	if Input.is_action_just_pressed("jump"):
-		_try_jump()
+		if Input.is_action_just_pressed("jump"):
+			_try_jump()
 			
-	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing(): 
-		dash.start_dash(dash_duration)
+		if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing(): 
+			dash.start_dash(dash_duration)
 	
-	if dash.is_dashing():
-		velocity.x = direction.x * DASH_SPEED
-	else:
-		velocity.x = direction.x * SPEED #move horizontally
+		if dash.is_dashing():
+			velocity.x = direction.x * DASH_SPEED
+		else:
+			velocity.x = direction.x * SPEED #move horizontally
 		
-	if invin.isInvincible():
-		flash_animation.play()
+		if invin.isInvincible():
+			flash_animation.play()
 	
-	move_and_slide()
+		move_and_slide()
 	
 func take_damage( damage ):
-	if !invin.isInvincible() and GameManager.health <= 1:
+	if !invin.isInvincible() and GameManager.health <= 1: #first checks if not invin and if it's on last health
 		GameManager.health -= damage
-		death.died()
-	elif !invin.isInvincible() and GameManager.health > 0: #first checks if invincible and can_be_hit
+		PopUp.died()
+	elif !invin.isInvincible() and GameManager.health > 0: #checks if invincible and can_be_hit
 		GameManager.health -= damage
 		invin.startInvincible()
 		#if invin.can_go_invincible: #in order for invincibility to begin again, invin must not be on delay.

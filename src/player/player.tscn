@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://src/player/abilities/dash.tscn" id="2_bnniu"]
 [ext_resource type="Shader" path="res://src/player/damage_flash.gdshader" id="2_pf2lg"]
 [ext_resource type="PackedScene" uid="uid://coluexsscex40" path="res://src/player/invincibility.tscn" id="3_hhsew"]
-[ext_resource type="PackedScene" uid="uid://cyyduv1kpj3xm" path="res://src/player/death.tscn" id="5_adbns"]
+[ext_resource type="PackedScene" uid="uid://cmbp450m3tx4k" path="res://src/player/pop_up.tscn" id="5_oo06i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gvm8e"]
 shader = ExtResource("2_pf2lg")
@@ -87,7 +87,7 @@ shape = SubResource("RectangleShape2D_7bujn")
 
 [node name="Invincibility" parent="." instance=ExtResource("3_hhsew")]
 
-[node name="death" parent="." instance=ExtResource("5_adbns")]
+[node name="PopUp" parent="." instance=ExtResource("5_oo06i")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
