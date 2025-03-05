@@ -39,27 +39,28 @@ func _physics_process(delta: float) -> void:
 	if PopUp.can_move:
 		if Input.is_action_just_pressed("menu"):
 			PopUp.pause()
+
 		if !is_on_floor():
 			velocity.y += GRAVITY
 			if velocity.y > 1000:
 				velocity.y = 1000
-	
+
 		if Input.is_action_just_pressed("jump"):
 			_try_jump()
 			
 		if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing(): 
 			dash.start_dash(dash_duration)
-	
+
 		if dash.is_dashing():
 			velocity.x = direction.x * DASH_SPEED
 		else:
 			velocity.x = direction.x * SPEED #move horizontally
-		
+
 		if invin.isInvincible():
 			flash_animation.play()
-	
+
 		move_and_slide()
-	
+
 func take_damage( damage ):
 	if !invin.isInvincible() and GameManager.health <= 1: #first checks if not invin and if it's on last health
 		GameManager.health -= damage
