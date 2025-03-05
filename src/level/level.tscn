@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://buhspr458c21v"]
 
 [ext_resource type="PackedScene" uid="uid://dfeju83ftmt7" path="res://src/level/obstacles/platform.tscn" id="1_n53je"]
-[ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://src/level/objects/coin.tscn" id="2_a445y"]
+[ext_resource type="PackedScene" path="res://src/level/objects/coin.tscn" id="2_a445y"]
 
 [node name="Level" type="Node2D"]
 
@@ -24,6 +24,20 @@ position = Vector2(2532, 602)
 
 [node name="Platform6" parent="Platforms" instance=ExtResource("1_n53je")]
 position = Vector2(2474, 1250)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("1_n53je")]
+position = Vector2(3807, 555)
+scale = Vector2(0.08, 5.6)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("1_n53je")]
+position = Vector2(4313, 325)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("1_n53je")]
+position = Vector2(57, 385)
+scale = Vector2(0.08, 5.6)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("1_n53je")]
+position = Vector2(-421, 626)
 
 [node name="Node" type="Node" parent="."]
 

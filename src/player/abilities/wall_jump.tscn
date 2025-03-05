@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlycndfy4hnlw"]
+
+[ext_resource type="Script" path="res://src/player/abilities/wall_jump.gd" id="1_pvgjp"]
+
+[node name="WallJump" type="Node"]
+script = ExtResource("1_pvgjp")
