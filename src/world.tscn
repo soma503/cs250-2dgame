@@ -7,5 +7,6 @@
 position = Vector2(-30, 12)
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_50hsk")]
+position = Vector2(-2626, 477)
 
 [node name="Level" parent="." instance=ExtResource("2_a4f4e")]
