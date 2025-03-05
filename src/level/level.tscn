@@ -46,6 +46,9 @@ position = Vector2(1612, 765)
 [node name="Coin6" parent="Node" instance=ExtResource("2_a445y")]
 position = Vector2(1541, 766)
 
+[node name="Coin7" parent="Node" instance=ExtResource("2_a445y")]
+position = Vector2(-1652, 421)
+
 [node name="lvlonetilemap" parent="." instance=ExtResource("3_h320i")]
-position = Vector2(1072, 1026)
+position = Vector2(-704, 539)
 scale = Vector2(2, 2)
