@@ -19,7 +19,7 @@ var run_tap_interval = 5.00
 @onready var dash = $Dash
 var dash_duration = 0.2	
 #death
-@onready var PopUp = $PopUp
+@onready var menu = $menus
 
 #invincibility
 @onready var invin = $Invincibility
@@ -36,9 +36,9 @@ func _process(delta):
 
 func _physics_process(delta: float) -> void:
 	#can only move if death screen is not up
-	if PopUp.can_move:
+	if menu.can_move:
 		if Input.is_action_just_pressed("menu"):
-			PopUp.pause()
+			menu.pause()
 
 		if !is_on_floor():
 			velocity.y += GRAVITY
@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 func take_damage( damage ):
 	if !invin.isInvincible() and GameManager.health <= 1: #first checks if not invin and if it's on last health
 		GameManager.health -= damage
-		PopUp.died()
+		menu.died()
 	elif !invin.isInvincible() and GameManager.health > 0: #checks if invincible and can_be_hit
 		GameManager.health -= damage
 		invin.startInvincible()

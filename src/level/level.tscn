@@ -1,11 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://buhspr458c21v"]
+[gd_scene load_steps=9 format=3 uid="uid://buhspr458c21v"]
 
 [ext_resource type="PackedScene" uid="uid://dfeju83ftmt7" path="res://src/level/obstacles/platform.tscn" id="1_n53je"]
 [ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://src/level/objects/coin.tscn" id="2_a445y"]
-[ext_resource type="PackedScene" path="res://src/level/obstacles/platformShort.tscn" id="2_lc05k"]
-[ext_resource type="PackedScene" path="res://src/level/obstacles/floor.tscn" id="3_rko0a"]
-[ext_resource type="PackedScene" path="res://src/level/obstacles/wall.tscn" id="4_c5loc"]
+[ext_resource type="PackedScene" uid="uid://ckk070yh21syy" path="res://src/level/obstacles/platformShort.tscn" id="2_lc05k"]
+[ext_resource type="PackedScene" uid="uid://bkftx1e8me27k" path="res://src/level/obstacles/floor.tscn" id="3_rko0a"]
+[ext_resource type="PackedScene" uid="uid://bc6fsgulxdyur" path="res://src/level/obstacles/wall.tscn" id="4_c5loc"]
 [ext_resource type="PackedScene" uid="uid://c816wdwqbxuq6" path="res://src/level/obstacles/spike.tscn" id="6_4s0yy"]
+[ext_resource type="PackedScene" uid="uid://dm8b25uletok5" path="res://src/level/objects/popUps.tscn" id="6_8inhx"]
+
+[sub_resource type="GDScript" id="GDScript_fukhn"]
+resource_local_to_scene = true
+script/source = "extends Node
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	print(\"pop2\")
+	get_node(\"CanvasLayer\").doubleInstruct()
+"
 
 [node name="Level1pt1" type="Node2D"]
 
@@ -127,6 +146,15 @@ position = Vector2(894, 533)
 
 [node name="spike3" parent="enemies" instance=ExtResource("6_4s0yy")]
 position = Vector2(1047, 533)
+
+[node name="PopUps" type="Node" parent="."]
+
+[node name="popUps" parent="PopUps" instance=ExtResource("6_8inhx")]
+position = Vector2(367, 629)
+
+[node name="popUps2" parent="PopUps" instance=ExtResource("6_8inhx")]
+position = Vector2(2479, 390)
+script = SubResource("GDScript_fukhn")
 
 [node name="floor" parent="." instance=ExtResource("3_rko0a")]
 position = Vector2(580, 700)

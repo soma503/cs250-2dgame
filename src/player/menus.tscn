@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmbp450m3tx4k"]
+[gd_scene load_steps=8 format=3 uid="uid://dlmayrogprxbi"]
 
-[ext_resource type="Script" path="res://src/player/pop_up.gd" id="1_gjg5x"]
-[ext_resource type="Script" path="res://src/player/death_menu.gd" id="2_shpst"]
-[ext_resource type="FontFile" uid="uid://dg0bdmkfq8uqx" path="res://assets/Dangrek-Regular.ttf" id="3_6r0ws"]
-[ext_resource type="Script" path="res://src/player/pause_menu.gd" id="3_ni03e"]
+[ext_resource type="Script" path="res://src/level/objects/menus.gd" id="1_2swej"]
+[ext_resource type="Script" path="res://src/player/death_menu.gd" id="2_io6ss"]
+[ext_resource type="FontFile" uid="uid://dg0bdmkfq8uqx" path="res://assets/Dangrek-Regular.ttf" id="3_uppm8"]
+[ext_resource type="Script" path="res://src/player/pause_menu.gd" id="4_ngqh7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_swmrt"]
 
@@ -11,12 +11,12 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hekyd"]
 
-[node name="PopUp" type="Node"]
-script = ExtResource("1_gjg5x")
+[node name="menus" type="Node"]
+script = ExtResource("1_2swej")
 
 [node name="deathMenu" type="CanvasLayer" parent="."]
 visible = false
-script = ExtResource("2_shpst")
+script = ExtResource("2_io6ss")
 
 [node name="TextureRect2" type="TextureRect" parent="deathMenu"]
 modulate = Color(0.482353, 0.745098, 1, 0.380392)
@@ -34,7 +34,7 @@ offset_left = 337.0
 offset_top = 165.0
 offset_right = 383.256
 offset_bottom = 213.224
-theme_override_fonts/font = ExtResource("3_6r0ws")
+theme_override_fonts/font = ExtResource("3_uppm8")
 theme_override_font_sizes/font_size = 80
 text = "YOU DIED"
 horizontal_alignment = 1
@@ -48,7 +48,7 @@ offset_left = 402.0
 offset_top = 321.0
 offset_right = 727.0
 offset_bottom = 366.0
-theme_override_fonts/font = ExtResource("3_6r0ws")
+theme_override_fonts/font = ExtResource("3_uppm8")
 theme_override_font_sizes/font_size = 20
 text = "RETRY"
 icon = SubResource("CanvasTexture_kckpe")
@@ -59,14 +59,14 @@ offset_left = 402.0
 offset_top = 382.0
 offset_right = 727.0
 offset_bottom = 427.0
-theme_override_fonts/font = ExtResource("3_6r0ws")
+theme_override_fonts/font = ExtResource("3_uppm8")
 theme_override_font_sizes/font_size = 20
 text = "QUIT"
 icon = SubResource("CanvasTexture_hekyd")
 
 [node name="pauseMenu" type="CanvasLayer" parent="."]
 visible = false
-script = ExtResource("3_ni03e")
+script = ExtResource("4_ngqh7")
 
 [node name="TextureRect" type="TextureRect" parent="pauseMenu"]
 modulate = Color(0.482353, 0.745098, 1, 0.2)
@@ -81,7 +81,7 @@ offset_left = 365.0
 offset_top = 156.0
 offset_right = 821.0
 offset_bottom = 301.0
-theme_override_fonts/font = ExtResource("3_6r0ws")
+theme_override_fonts/font = ExtResource("3_uppm8")
 theme_override_font_sizes/font_size = 80
 text = "GAME PAUSED"
 
@@ -91,7 +91,7 @@ offset_left = 458.0
 offset_top = 282.0
 offset_right = 724.0
 offset_bottom = 322.0
-theme_override_fonts/font = ExtResource("3_6r0ws")
+theme_override_fonts/font = ExtResource("3_uppm8")
 theme_override_font_sizes/font_size = 20
 text = "RESUME"
 
@@ -101,7 +101,7 @@ offset_left = 458.0
 offset_top = 338.0
 offset_right = 726.0
 offset_bottom = 376.0
-theme_override_fonts/font = ExtResource("3_6r0ws")
+theme_override_fonts/font = ExtResource("3_uppm8")
 theme_override_font_sizes/font_size = 20
 text = "RETRY"
 
@@ -111,7 +111,7 @@ offset_left = 458.0
 offset_top = 390.0
 offset_right = 726.0
 offset_bottom = 428.0
-theme_override_fonts/font = ExtResource("3_6r0ws")
+theme_override_fonts/font = ExtResource("3_uppm8")
 theme_override_font_sizes/font_size = 20
 text = "QUIT"
 
