@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=3 format=3 uid="uid://bc6fsgulxdyur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k00oi"]
@@ -16,3 +17,4 @@ shape = SubResource("RectangleShape2D_k00oi")
 position = Vector2(6.49999, 84)
 scale = Vector2(29, 644)
 mesh = SubResource("QuadMesh_l25pq")
+\
