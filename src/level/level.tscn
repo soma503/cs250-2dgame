@@ -1,33 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://buhspr458c21v"]
+[gd_scene load_steps=3 format=3 uid="uid://buhspr458c21v"]
 
-[ext_resource type="PackedScene" uid="uid://dfeju83ftmt7" path="res://src/level/obstacles/platform.tscn" id="1_n53je"]
-[ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://src/level/objects/coin.tscn" id="2_a445y"]
-[ext_resource type="PackedScene" uid="uid://blqx54q632t5c" path="res://src/level/obstacles/wall.tscn" id="3_wf8ub"]
+[ext_resource type="PackedScene" uid="uid://c4e8y1wqgte18" path="res://src/level/objects/coin.tscn" id="2_a445y"]
+[ext_resource type="PackedScene" uid="uid://ce8xupmvsi30o" path="res://lvlonetilemap.tscn" id="3_h320i"]
 
 [node name="Level" type="Node2D"]
 
-[node name="Platforms" type="Node" parent="."]
+[node name="Node" type="Node" parent="."]
 
-[node name="Platform" parent="Platforms" instance=ExtResource("1_n53je")]
-position = Vector2(550, 623)
+[node name="Coin" parent="Node" instance=ExtResource("2_a445y")]
+position = Vector2(-2364, 513)
 
-[node name="Platform2" parent="Platforms" instance=ExtResource("1_n53je")]
-position = Vector2(1588, 889)
+[node name="Coin2" parent="Node" instance=ExtResource("2_a445y")]
+position = Vector2(-2211, 515)
 
-[node name="Platform3" parent="Platforms" instance=ExtResource("1_n53je")]
-position = Vector2(569, 1229)
+[node name="Coin3" parent="Node" instance=ExtResource("2_a445y")]
+position = Vector2(-2288, 514)
 
-[node name="coin" parent="." instance=ExtResource("2_a445y")]
-position = Vector2(580, 522)
+[node name="Coin4" parent="Node" instance=ExtResource("2_a445y")]
+position = Vector2(-899, 411)
 
-[node name="Wall" parent="." instance=ExtResource("3_wf8ub")]
-position = Vector2(1934, 578)
+[node name="Coin5" parent="Node" instance=ExtResource("2_a445y")]
+position = Vector2(188, 313)
 
-[node name="Wall2" parent="." instance=ExtResource("3_wf8ub")]
-position = Vector2(2138, 678)
+[node name="Coin6" parent="Node" instance=ExtResource("2_a445y")]
+position = Vector2(1583, 284)
 
-[node name="Wall3" parent="." instance=ExtResource("3_wf8ub")]
-position = Vector2(1934, 293)
+[node name="Coin7" parent="Node" instance=ExtResource("2_a445y")]
+position = Vector2(3988, 111)
 
-[node name="Wall4" parent="." instance=ExtResource("3_wf8ub")]
-position = Vector2(2138, 397)
+[node name="lvlonetilemap" parent="." instance=ExtResource("3_h320i")]
+position = Vector2(-704, 539)
+scale = Vector2(2, 2)
