@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gameV1"
-run/main_scene="res://src/world.tscn"
+run/main_scene="res://lvlonetilemap.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -25,7 +25,7 @@ project/assembly_name="gameV1"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 

@@ -11,6 +11,7 @@ size = Vector2(50, 50)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(592, 147)
+scale = Vector2(3, 5)
 script = ExtResource("1_0eovg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,6 +25,7 @@ shape = SubResource("RectangleShape2D_7bujn")
 [node name="Dash" parent="." instance=ExtResource("2_bnniu")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
 
 [node name="Coins" type="Label" parent="Camera2D"]
 offset_left = -20.0

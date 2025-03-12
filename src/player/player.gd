@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
 var direction: Vector2 = Vector2.ZERO
-const GRAVITY = 30
+const GRAVITY = 90
 const SPEED = 300.0
 
 #jump
 var has_double_jump = true
-const JUMP_FORCE = 600
-const DOUBLE_JUMP_FORCE = 900
+const JUMP_FORCE = 1200
+const DOUBLE_JUMP_FORCE = 1800
 @onready var double_jump = $DoubleJump
 #dash
-const DASH_SPEED = 1200
+const DASH_SPEED = 2000
 const DOUBLE_TAP_DELAY = 1000 #in miliseconds
 var last_right_tap_time  = 0
 var last_left_tap_time = 0
@@ -19,12 +19,12 @@ var run_tap_interval = 5.00
 var dash_duration = 0.2	
 
 #stuff
-var speed = 600.0
-var acceleration = 800.0
-var air_acceleration = 600.0
-var air_friction = 500.0
-var friction = 3000.0
-var gravity = 1900.0
+var speed = 1000.0
+var acceleration = 1500.0
+var air_acceleration = 1000.0
+var air_friction = 1000.0
+var friction = 5000.0
+var gravity = 3500.0
 var jump_force = 600
 var double_jump_force = 900
 
