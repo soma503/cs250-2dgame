@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 func moveInstruct():
 	timerStart()
-	label.text = ("use a and d to move left and right")
+	label.text = ("use a and d to move \n left and right")
 	
 func jumpInstruct():
 	timerStart()
@@ -21,7 +21,7 @@ func jumpInstruct():
 	
 func doubleInstruct():
 	timerStart()
-	label.text = ("press space bar twice to double jump")
+	label.text = ("press space bar twice \n to double jump")
 	
 func timerStart():
 	set_visible(true)
