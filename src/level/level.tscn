@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dfeju83ftmt7" path="res://src/level/obstacles/platform.tscn" id="1_n53je"]
 [ext_resource type="PackedScene" uid="uid://c4e8y1wqgte18" path="res://src/level/objects/coin.tscn" id="2_a445y"]
-[ext_resource type="PackedScene" uid="uid://ce8xupmvsi30o" path="res://lvlonetilemap.tscn" id="3_h320i"]
+[ext_resource type="PackedScene" uid="uid://blqx54q632t5c" path="res://src/level/obstacles/wall.tscn" id="3_wf8ub"]
+
 
 [node name="Level" type="Node2D"]
 
@@ -17,35 +18,18 @@ position = Vector2(1588, 889)
 [node name="Platform3" parent="Platforms" instance=ExtResource("1_n53je")]
 position = Vector2(569, 1229)
 
-[node name="Platform4" parent="Platforms" instance=ExtResource("1_n53je")]
-position = Vector2(3306, 890)
+[node name="coin" parent="." instance=ExtResource("2_a445y")]
+position = Vector2(580, 522)
 
-[node name="Platform5" parent="Platforms" instance=ExtResource("1_n53je")]
-position = Vector2(2532, 602)
+[node name="Wall" parent="." instance=ExtResource("3_wf8ub")]
+position = Vector2(1934, 578)
 
-[node name="Platform6" parent="Platforms" instance=ExtResource("1_n53je")]
-position = Vector2(2474, 1250)
+[node name="Wall2" parent="." instance=ExtResource("3_wf8ub")]
+position = Vector2(2138, 678)
 
-[node name="Node" type="Node" parent="."]
+[node name="Wall3" parent="." instance=ExtResource("3_wf8ub")]
+position = Vector2(1934, 293)
 
-[node name="Coin" parent="Node" instance=ExtResource("2_a445y")]
-position = Vector2(690, 493)
+[node name="Wall4" parent="." instance=ExtResource("3_wf8ub")]
+position = Vector2(2138, 397)
 
-[node name="Coin2" parent="Node" instance=ExtResource("2_a445y")]
-position = Vector2(843, 495)
-
-[node name="Coin3" parent="Node" instance=ExtResource("2_a445y")]
-position = Vector2(766, 494)
-
-[node name="Coin4" parent="Node" instance=ExtResource("2_a445y")]
-position = Vector2(1465, 765)
-
-[node name="Coin5" parent="Node" instance=ExtResource("2_a445y")]
-position = Vector2(1612, 765)
-
-[node name="Coin6" parent="Node" instance=ExtResource("2_a445y")]
-position = Vector2(1541, 766)
-
-[node name="lvlonetilemap" parent="." instance=ExtResource("3_h320i")]
-position = Vector2(1072, 1026)
-scale = Vector2(2, 2)
