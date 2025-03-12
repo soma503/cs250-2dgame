@@ -23,6 +23,14 @@ func doubleInstruct():
 	timerStart()
 	label.text = ("press space bar twice \n to double jump")
 	
+func wallInstruct():
+	timerStart()
+	label.text = ("Jump wall to wall \n by pressing space")
+	
+func dashInstruct():
+	timerStart()
+	label.text = ("Press shift while \n moving to dash")
+	
 func timerStart():
 	set_visible(true)
 	timer.wait_time = 2.0
