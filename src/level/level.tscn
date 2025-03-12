@@ -1,9 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://buhspr458c21v"]
 
 [ext_resource type="PackedScene" uid="uid://dfeju83ftmt7" path="res://src/level/obstacles/platform.tscn" id="1_n53je"]
-[ext_resource type="PackedScene" uid="uid://c4e8y1wqgte18" path="res://src/level/objects/coin.tscn" id="2_a445y"]
+[ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://src/level/objects/coin.tscn" id="2_a445y"]
 [ext_resource type="PackedScene" uid="uid://blqx54q632t5c" path="res://src/level/obstacles/wall.tscn" id="3_wf8ub"]
-
 
 [node name="Level" type="Node2D"]
 
@@ -32,4 +31,3 @@ position = Vector2(1934, 293)
 
 [node name="Wall4" parent="." instance=ExtResource("3_wf8ub")]
 position = Vector2(2138, 397)
-

@@ -19,7 +19,7 @@ var run_tap_interval = 5.00
 var dash_duration = 0.2	
 
 #stuff
-var speed = 400.0
+var speed = 600.0
 var acceleration = 800.0
 var air_acceleration = 600.0
 var air_friction = 500.0
@@ -75,7 +75,11 @@ func handle_wall_jump():
 	if is_on_floor(): return
 	var wall_normal = get_wall_normal()
 	if Input.is_action_pressed("right") and Input.is_action_just_pressed("jump") and wall_normal == Vector2.LEFT:
+		velocity.x = wall_normal.x * speed 
+		velocity.y = -JUMP_FORCE
+	if Input.is_action_pressed("left") and Input.is_action_just_pressed("jump") and wall_normal == Vector2.RIGHT:
 		velocity.x = wall_normal.x * speed
+		velocity.y = -JUMP_FORCE
 
 func handle_air_acceleration(input_axis, delta):
 	if is_on_floor(): return
