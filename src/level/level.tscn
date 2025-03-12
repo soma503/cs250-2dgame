@@ -4,15 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://c4e8y1wqgte18" path="res://src/level/objects/coin.tscn" id="2_a445y"]
 [ext_resource type="PackedScene" uid="uid://blqx54q632t5c" path="res://src/level/obstacles/wall.tscn" id="3_wf8ub"]
 
+
 [node name="Level" type="Node2D"]
 
-[node name="Platform" parent="." instance=ExtResource("1_n53je")]
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("1_n53je")]
 position = Vector2(550, 623)
 
-[node name="Platform2" parent="." instance=ExtResource("1_n53je")]
-position = Vector2(1720, 916)
+[node name="Platform2" parent="Platforms" instance=ExtResource("1_n53je")]
+position = Vector2(1588, 889)
 
-[node name="Platform3" parent="." instance=ExtResource("1_n53je")]
+[node name="Platform3" parent="Platforms" instance=ExtResource("1_n53je")]
 position = Vector2(569, 1229)
 
 [node name="coin" parent="." instance=ExtResource("2_a445y")]
@@ -29,3 +32,4 @@ position = Vector2(1934, 293)
 
 [node name="Wall4" parent="." instance=ExtResource("3_wf8ub")]
 position = Vector2(2138, 397)
+

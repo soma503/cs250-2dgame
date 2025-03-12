@@ -15,13 +15,21 @@ run/main_scene="res://src/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://src/game_manager.gd"
+
 [dotnet]
 
 project/assembly_name="gameV1"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
+
+[global_group]
+
+Player=""
 
 [input]
 

@@ -8,7 +8,7 @@ const SPEED = 300.0
 var has_double_jump = true
 const JUMP_FORCE = 600
 const DOUBLE_JUMP_FORCE = 900
-
+@onready var double_jump = $DoubleJump
 #dash
 const DASH_SPEED = 1200
 const DOUBLE_TAP_DELAY = 1000 #in miliseconds
@@ -33,6 +33,11 @@ var double_jump_force = 900
 #camera
 @onready var camera := $Camera2D as Camera2D
 
+func _process(delta):
+
+	#COINS
+	$"Camera2D/Coins".text = str(GameManager.coins)
+  
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	handle_jump()
@@ -71,11 +76,7 @@ func handle_wall_jump():
 	var wall_normal = get_wall_normal()
 	if Input.is_action_pressed("right") and Input.is_action_just_pressed("jump") and wall_normal == Vector2.LEFT:
 		velocity.x = wall_normal.x * speed
-		velocity.y = -DOUBLE_JUMP_FORCE
-	if Input.is_action_pressed("left") and Input.is_action_just_pressed("jump") and wall_normal == Vector2.RIGHT:
-		velocity.x = wall_normal.x * speed
-		velocity.y = -DOUBLE_JUMP_FORCE
-		
+
 func handle_air_acceleration(input_axis, delta):
 	if is_on_floor(): return
 	if input_axis != 0:

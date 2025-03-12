@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxx534xijkghm"]
+
+[ext_resource type="Script" path="res://src/player/abilities/double_jump.gd" id="1_id8i1"]
+
+[node name="DoubleJump" type="Node"]
+script = ExtResource("1_id8i1")
