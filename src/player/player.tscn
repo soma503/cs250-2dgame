@@ -67,7 +67,7 @@ size = Vector2(50, 50)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(592, 147)
-scale = Vector2(3, 5)
+scale = Vector2(3, 4)
 script = ExtResource("1_0eovg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -81,7 +81,8 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
+position = Vector2(-0.666672, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7bujn")
 
 [node name="Dash" parent="." instance=ExtResource("2_bnniu")]
