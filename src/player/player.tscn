@@ -82,7 +82,6 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.666672, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7bujn")
 
 [node name="Dash" parent="." instance=ExtResource("2_bnniu")]
