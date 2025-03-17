@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://coluexsscex40"]
+
+[ext_resource type="Script" path="res://src/player/invincibility.gd" id="1_xjsa3"]
+
+[node name="Invincibility" type="Node"]
+script = ExtResource("1_xjsa3")
+
+[node name="InviTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="InviTimer" to="." method="_on_invi_timer_timeout"]
