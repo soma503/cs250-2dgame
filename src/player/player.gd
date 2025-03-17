@@ -46,12 +46,13 @@ func _process(delta):
 	$"Camera2D/Coins".text = str(GameManager.coins)
 
 func _physics_process(delta: float) -> void:
+	handle_pause()
 	if menu.can_move:
 		apply_gravity(delta)
 		handle_jump()
 		handle_wall_jump()
 		handle_dash()
-		
+	
 		var input_axis = Input.get_axis("left", "right")
 		handle_acceleration(input_axis, delta)
 		handle_air_acceleration(input_axis, delta)
@@ -119,4 +120,6 @@ func get_sign(number):
 	else:
 		return -1
 		
-	
+func handle_pause():
+	if Input.is_action_pressed("menu"):
+		menu.pause()
