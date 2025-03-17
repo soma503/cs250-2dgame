@@ -17,6 +17,7 @@ var dash_duration = 0.2
 
 @onready var invin = $Invincibility
 
+@onready var animated_sprite = $Sprite2D
 #stuff
 var speed = 2000.0
 var dash_speed = 3000
@@ -45,8 +46,10 @@ func _physics_process(delta: float) -> void:
 		handle_jump()
 		handle_wall_jump()
 		handle_dash()
+		
 	
 		var input_axis = Input.get_axis("left", "right")
+		handle_animation()
 		handle_acceleration(input_axis, delta)
 		handle_air_acceleration(input_axis, delta)
 		apply_friction(input_axis, delta)
@@ -116,3 +119,11 @@ func get_sign(number):
 func handle_pause():
 	if Input.is_action_pressed("menu"):
 		menu.pause()
+
+func handle_animation():
+	animated_sprite.play("idle")
+	while Input.is_action_pressed("right"):
+		animated_sprite.play("running")
+	if Input.is_action_pressed("left"):
+		animated_sprite.flip(true)
+		animated_sprite.play("running")
