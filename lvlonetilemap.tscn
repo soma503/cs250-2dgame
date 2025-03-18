@@ -684,11 +684,12 @@ tile_set = SubResource("TileSet_nc4p6")
 [node name="popUps" parent="PopUps" instance=ExtResource("4_uvusn")]
 position = Vector2(-10, -47)
 
-[node name="Player" parent="." instance=ExtResource("3_i1c53")]
-position = Vector2(-832, -719)
-
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" groups=["Player"] instance=ExtResource("5_0twu2")]
+z_index = 10
 position = Vector2(1925, -612)
 scale = Vector2(5, 5)
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("3_i1c53")]
+position = Vector2(-832, -719)

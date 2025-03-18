@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1222eaq4q0lc"]
+
+[ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://src/level/objects/coin.tscn" id="1_ewgfp"]
+
+[node name="Coins" type="Node2D"]
+
+[node name="Coin" parent="." instance=ExtResource("1_ewgfp")]
