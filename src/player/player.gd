@@ -26,9 +26,9 @@ var acceleration = 3000.0
 var air_acceleration = 1500.0
 var air_friction = 4000.0
 var friction = 8000.0
-var gravity = 4000.0
+var gravity = 5000.0
 var jump_force = 2100
-var double_jump_force = 2250
+var double_jump_force = 2600
 
 
 
@@ -122,19 +122,18 @@ func handle_pause():
 	if Input.is_action_pressed("menu"):
 		menu.pause()
 
-func handle_animation(direction):
-	if !velocity:
-		if direction == -1:
-			animated_sprite.flip_h = true
-			animated_sprite.play("idle")
-		else:
-			animated_sprite.flip_h = false
-			animated_sprite.play("idle")
-	if velocity:
-		if direction == -1:
-			animated_sprite.flip_h = true
-			animated_sprite.play("running")
-		else:
-			animated_sprite.flip_h = false
-			animated_sprite.play("running")
+func handle_animation(input_axis):
+	#FRAME 5 AND 2 ARE THE SAME IN RUNNING ANIMATION (makes it look like he tap dancing lol)
 	
+	if input_axis != 0:
+		animated_sprite.flip_h = (input_axis < 0) #this sets the way sprite is facing
+		animated_sprite.play("running")
+	else:
+		animated_sprite.play("idle") 
+		#animated_sprite.fliph is only ever updated if we choose a different direction with key input
+		#	so no need to update it anywhere else outside of when we choose our direction with our key input
+		
+	if not is_on_floor():
+		animated_sprite.play("jumping")
+		
+		
