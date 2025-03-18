@@ -218,7 +218,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
-size = Vector2(50, 50)
+size = Vector2(37, 58.75)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(592, 147)
@@ -227,8 +227,8 @@ script = ExtResource("1_0eovg")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_gvm8e")
-position = Vector2(-1, 0)
-scale = Vector2(0.71051, 0.559201)
+position = Vector2(-0.95342, -5.17553)
+scale = Vector2(0.335628, 0.264153)
 sprite_frames = SubResource("SpriteFrames_hb6sx")
 animation = &"running"
 
@@ -238,7 +238,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.666672, 0)
+position = Vector2(-1.16667, -4.375)
 shape = SubResource("RectangleShape2D_7bujn")
 
 [node name="Dash" parent="." instance=ExtResource("2_bnniu")]
@@ -248,7 +248,11 @@ shape = SubResource("RectangleShape2D_7bujn")
 [node name="menus" parent="." instance=ExtResource("5_nwc5u")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.25, 0.25)
+limit_left = -2750
+limit_top = -5250
+limit_right = 19500
+limit_bottom = 500
 
 [node name="Coins" type="Label" parent="Camera2D"]
 offset_left = -20.0

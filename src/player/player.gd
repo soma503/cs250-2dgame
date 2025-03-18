@@ -18,6 +18,7 @@ var dash_duration = 0.2
 @onready var invin = $Invincibility
 
 @onready var animated_sprite = $Sprite2D
+
 #stuff
 var speed = 2000.0
 var dash_speed = 3000
@@ -26,8 +27,8 @@ var air_acceleration = 1500.0
 var air_friction = 4000.0
 var friction = 8000.0
 var gravity = 4000.0
-var jump_force = 1500
-var double_jump_force = 2000
+var jump_force = 2100
+var double_jump_force = 2250
 
 
 
@@ -38,6 +39,7 @@ func _process(delta):
 	$"%Health".text= "Health: " + str(GameManager.health)
 	#COINS
 	$"Camera2D/Coins".text = str(GameManager.coins)
+	
 
 func _physics_process(delta: float) -> void:
 	handle_pause()
@@ -46,16 +48,16 @@ func _physics_process(delta: float) -> void:
 		handle_jump()
 		handle_wall_jump()
 		handle_dash()
-		
 	
 		var input_axis = Input.get_axis("left", "right")
-		handle_animation()
+		
 		handle_acceleration(input_axis, delta)
 		handle_air_acceleration(input_axis, delta)
 		apply_friction(input_axis, delta)
 		apply_air_resistance(input_axis, delta)
 		
 		move_and_slide()
+		handle_animation(input_axis)
 
 func apply_gravity(delta):
 	if not is_on_floor():
@@ -120,10 +122,19 @@ func handle_pause():
 	if Input.is_action_pressed("menu"):
 		menu.pause()
 
-func handle_animation():
-	animated_sprite.play("idle")
-	while Input.is_action_pressed("right"):
-		animated_sprite.play("running")
-	if Input.is_action_pressed("left"):
-		animated_sprite.flip(true)
-		animated_sprite.play("running")
+func handle_animation(direction):
+	if !velocity:
+		if direction == -1:
+			animated_sprite.flip_h = true
+			animated_sprite.play("idle")
+		else:
+			animated_sprite.flip_h = false
+			animated_sprite.play("idle")
+	if velocity:
+		if direction == -1:
+			animated_sprite.flip_h = true
+			animated_sprite.play("running")
+		else:
+			animated_sprite.flip_h = false
+			animated_sprite.play("running")
+	
