@@ -13,7 +13,7 @@ var has_double_jump = true
 @onready var dash = $Dash
 var dash_duration = 0.2	
 
-@onready var menu = $menus
+@onready var menu = $menus2
 
 @onready var invin = $Invincibility
 
@@ -27,7 +27,7 @@ var air_acceleration = 1500.0
 var air_friction = 4000.0
 var friction = 8000.0
 var gravity = 5000.0
-var jump_force = 2100
+var jump_force = 2200
 var double_jump_force = 2600
 
 
@@ -124,7 +124,7 @@ func handle_pause():
 
 func handle_animation(input_axis):
 	#FRAME 5 AND 2 ARE THE SAME IN RUNNING ANIMATION (makes it look like he tap dancing lol)
-	
+		
 	if input_axis != 0:
 		animated_sprite.flip_h = (input_axis < 0) #this sets the way sprite is facing
 		animated_sprite.play("running")

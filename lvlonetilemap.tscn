@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://ce8xupmvsi30o"]
+[gd_scene load_steps=11 format=4 uid="uid://ce8xupmvsi30o"]
 
 [ext_resource type="Texture2D" uid="uid://sfetx0mw1ro" path="res://assets/tilesheet350x350.png" id="1_xnnp1"]
 [ext_resource type="Texture2D" uid="uid://b4ct6hn28borj" path="res://assets/250x250tilesheetplatforms.png" id="2_46q5q"]
 [ext_resource type="PackedScene" uid="uid://cjmjm576tv8rh" path="res://src/player/player.tscn" id="3_i1c53"]
 [ext_resource type="PackedScene" uid="uid://dm8b25uletok5" path="res://src/level/objects/popUps.tscn" id="4_uvusn"]
 [ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://src/level/objects/coin.tscn" id="5_0twu2"]
+[ext_resource type="Texture2D" uid="uid://byyhp37dd55gu" path="res://assets/backdropLevel1.png" id="6_bs1kn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v58ah"]
 texture = ExtResource("1_xnnp1")
@@ -672,6 +673,24 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_v58ah")
 sources/1 = SubResource("TileSetAtlasSource_qcbs8")
 
+[sub_resource type="GDScript" id="GDScript_vd7r0"]
+resource_local_to_scene = true
+script/source = "extends Node
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	#print(\"pop1\")
+	get_node(\"CanvasLayer\").jumpInstruct()
+"
+
 [node name="lvlonetilemap" type="Node2D"]
 
 [node name="lvloneplatform" type="TileMapLayer" parent="."]
@@ -684,6 +703,10 @@ tile_set = SubResource("TileSet_nc4p6")
 [node name="popUps" parent="PopUps" instance=ExtResource("4_uvusn")]
 position = Vector2(-10, -47)
 
+[node name="popUps2" parent="PopUps" instance=ExtResource("4_uvusn")]
+position = Vector2(1112, -45)
+script = SubResource("GDScript_vd7r0")
+
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" groups=["Player"] instance=ExtResource("5_0twu2")]
@@ -693,3 +716,29 @@ scale = Vector2(5, 5)
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("3_i1c53")]
 position = Vector2(-832, -719)
+
+[node name="backgorund" type="Node" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="backgorund"]
+z_index = -1
+offset_left = -2541.0
+offset_top = -2925.0
+offset_right = 6553.0
+offset_bottom = 56.0
+texture = ExtResource("6_bs1kn")
+
+[node name="TextureRect2" type="TextureRect" parent="backgorund"]
+z_index = -1
+offset_left = 6543.0
+offset_top = -2925.0
+offset_right = 15637.0
+offset_bottom = 56.0
+texture = ExtResource("6_bs1kn")
+
+[node name="TextureRect3" type="TextureRect" parent="backgorund"]
+z_index = -1
+offset_left = 15631.0
+offset_top = -2925.0
+offset_right = 24725.0
+offset_bottom = 56.0
+texture = ExtResource("6_bs1kn")
