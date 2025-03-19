@@ -14,12 +14,12 @@ func _process(delta: float) -> void:
 
 func moveInstruct():
 	timerStart()
-	canvas.texture = load("res://assets/PopUpIntro.png")
+	canvas.texture = load("res://assets/UI Graphics/PopUpIntro.png")
 	label.text = (" ")
 	
 func jumpInstruct():
 	timerStart()
-	canvas.texture = load("res://assets/JumpIntro.png")
+	canvas.texture = load("res://assets/UI Graphics/JumpIntro.png")
 	label.text = (" ")
 	
 func doubleInstruct():
@@ -32,7 +32,8 @@ func wallInstruct():
 	
 func dashInstruct():
 	timerStart()
-	label.text = ("Press shift while \n moving to dash")
+	label.text = (" ")
+	canvas.texture = load("res://assets/UI Graphics/popUpDash.png")
 	
 func timerStart():
 	set_visible(true)

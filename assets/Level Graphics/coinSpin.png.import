@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct67ljhsv1few"
-path="res://.godot/imported/PopUpIntro.png-d01a5ae7abcb709dbefde5f79cf215fa.ctex"
+uid="uid://b7teisv3oxrim"
+path="res://.godot/imported/coinSpin.png-9bd8ac6b04fef25fb47426a6f5daa529.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/PopUpIntro.png"
-dest_files=["res://.godot/imported/PopUpIntro.png-d01a5ae7abcb709dbefde5f79cf215fa.ctex"]
+source_file="res://assets/Level Graphics/coinSpin.png"
+dest_files=["res://.godot/imported/coinSpin.png-9bd8ac6b04fef25fb47426a6f5daa529.ctex"]
 
 [params]
 

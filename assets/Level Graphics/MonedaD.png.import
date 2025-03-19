@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sfetx0mw1ro"
-path="res://.godot/imported/tilesheet350x350.png-42e9c1b5bd8e3272ba5f0a3391795fb7.ctex"
+uid="uid://d1nv813fdc6mi"
+path="res://.godot/imported/MonedaD.png-8a5ba42cac075d81c85d71bee4d47e9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesheet350x350.png"
-dest_files=["res://.godot/imported/tilesheet350x350.png-42e9c1b5bd8e3272ba5f0a3391795fb7.ctex"]
+source_file="res://assets/Level Graphics/MonedaD.png"
+dest_files=["res://.godot/imported/MonedaD.png-8a5ba42cac075d81c85d71bee4d47e9a.ctex"]
 
 [params]
 
