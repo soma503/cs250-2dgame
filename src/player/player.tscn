@@ -313,23 +313,23 @@ shape = SubResource("RectangleShape2D_7bujn")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.25, 0.25)
 limit_left = -2750
-limit_top = -2925
+limit_top = -2990
 limit_right = 19500
 limit_bottom = 500
 
 [node name="Coins" type="Label" parent="Camera2D"]
-offset_left = -20.0
-offset_top = -55.0
-offset_right = 20.0
-offset_bottom = -32.0
+offset_left = -21.3333
+offset_top = -63.25
+offset_right = 18.6667
+offset_bottom = -35.25
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="Camera2D"]
 unique_name_in_owner = true
-offset_left = -41.0
-offset_top = -79.0
-offset_right = 19.0
-offset_bottom = -56.0
+offset_left = -35.6667
+offset_top = -82.25
+offset_right = 34.3333
+offset_bottom = -59.25
 text = "Health: 3"

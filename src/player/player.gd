@@ -26,8 +26,8 @@ var acceleration = 3000.0
 var air_acceleration = 1500.0
 var air_friction = 4000.0
 var friction = 8000.0
-var gravity = 5000.0
-var jump_force = 2200
+var gravity = 6000.0
+var jump_force = 2500
 var double_jump_force = 2600
 
 
