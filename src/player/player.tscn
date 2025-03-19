@@ -301,7 +301,9 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 position = Vector2(-1.83334, -4.375)
+
 shape = SubResource("RectangleShape2D_7bujn")
 
 [node name="menus2" parent="." instance=ExtResource("6_tdjyg")]
