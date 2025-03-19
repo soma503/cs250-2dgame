@@ -1,4 +1,5 @@
 extends CanvasLayer
+@onready var canvas = %TextureRect2
 @onready var label = $Label
 @onready var timer = $Timer
 const DURATION = 2.0
@@ -13,15 +14,17 @@ func _process(delta: float) -> void:
 
 func moveInstruct():
 	timerStart()
-	label.text = ("use a and d to move \n left and right")
+	canvas.texture = load("res://assets/PopUpIntro.png")
+	label.text = (" ")
 	
 func jumpInstruct():
 	timerStart()
-	label.text = ("press space bar to jump")
+	canvas.texture = load("res://assets/JumpIntro.png")
+	label.text = (" ")
 	
 func doubleInstruct():
 	timerStart()
-	label.text = ("press space bar twice \n to double jump")
+	label.text = ("Press JUMP twice \n to double jump")
 	
 func wallInstruct():
 	timerStart()

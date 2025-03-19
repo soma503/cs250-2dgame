@@ -13,9 +13,11 @@ var has_double_jump = true
 @onready var dash = $Dash
 var dash_duration = 0.2	
 
-@onready var menu = $menus
+@onready var menu = $menus2
 
 @onready var invin = $Invincibility
+
+@onready var animated_sprite = $Sprite2D
 
 #stuff
 var speed = 2000.0
@@ -24,9 +26,9 @@ var acceleration = 3000.0
 var air_acceleration = 1500.0
 var air_friction = 4000.0
 var friction = 8000.0
-var gravity = 4000.0
-var jump_force = 1500
-var double_jump_force = 2000
+var gravity = 6000.0
+var jump_force = 2500
+var double_jump_force = 2600
 
 
 
@@ -37,6 +39,7 @@ func _process(delta):
 	$"%Health".text= "Health: " + str(GameManager.health)
 	#COINS
 	$"Camera2D/Coins".text = str(GameManager.coins)
+	
 
 func _physics_process(delta: float) -> void:
 	handle_pause()
@@ -47,12 +50,14 @@ func _physics_process(delta: float) -> void:
 		handle_dash()
 	
 		var input_axis = Input.get_axis("left", "right")
+		
 		handle_acceleration(input_axis, delta)
 		handle_air_acceleration(input_axis, delta)
 		apply_friction(input_axis, delta)
 		apply_air_resistance(input_axis, delta)
 		
 		move_and_slide()
+		handle_animation(input_axis)
 
 func apply_gravity(delta):
 	if not is_on_floor():
@@ -116,3 +121,19 @@ func get_sign(number):
 func handle_pause():
 	if Input.is_action_pressed("menu"):
 		menu.pause()
+
+func handle_animation(input_axis):
+	#FRAME 5 AND 2 ARE THE SAME IN RUNNING ANIMATION (makes it look like he tap dancing lol)
+		
+	if input_axis != 0:
+		animated_sprite.flip_h = (input_axis < 0) #this sets the way sprite is facing
+		animated_sprite.play("running")
+	else:
+		animated_sprite.play("idle") 
+		#animated_sprite.fliph is only ever updated if we choose a different direction with key input
+		#	so no need to update it anywhere else outside of when we choose our direction with our key input
+		
+	if not is_on_floor():
+		animated_sprite.play("jumping")
+		
+		
