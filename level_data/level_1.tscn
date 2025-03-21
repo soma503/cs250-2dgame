@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ce8xupmvsi30o"]
+[gd_scene load_steps=13 format=4 uid="uid://ce8xupmvsi30o"]
 
 [ext_resource type="Texture2D" uid="uid://sfetx0mw1ro" path="res://assets/Level Graphics/tilesheet350x350.png" id="1_oau2d"]
 [ext_resource type="Texture2D" uid="uid://b4ct6hn28borj" path="res://assets/250x250tilesheetplatforms.png" id="2_0bu32"]
@@ -709,6 +709,8 @@ func _on_body_entered(body: Node2D) -> void:
 	get_node(\"CanvasLayer\").dashInstruct()
 "
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3c5ih"]
+
 [node name="lvlonetilemap" type="Node2D"]
 
 [node name="lvloneplatform" type="TileMapLayer" parent="."]
@@ -748,18 +750,18 @@ position = Vector2(-1781, -56)
 
 [node name="TextureRect" type="TextureRect" parent="backgorund"]
 z_index = -1
-offset_left = -2541.0
-offset_top = -2925.0
-offset_right = 6553.0
-offset_bottom = 56.0
+offset_left = -2496.0
+offset_top = -1612.0
+offset_right = 3072.0
+offset_bottom = 79.0
 texture = ExtResource("6_3jq66")
 
 [node name="TextureRect2" type="TextureRect" parent="backgorund"]
 z_index = -1
-offset_left = 6543.0
-offset_top = -2925.0
-offset_right = 15637.0
-offset_bottom = 56.0
+offset_left = 3057.0
+offset_top = -1628.0
+offset_right = 11476.0
+offset_bottom = 92.0
 texture = ExtResource("6_3jq66")
 
 [node name="TextureRect3" type="TextureRect" parent="backgorund"]
@@ -769,3 +771,8 @@ offset_top = -2925.0
 offset_right = 24725.0
 offset_bottom = 56.0
 texture = ExtResource("6_3jq66")
+
+[node name="TextureRect4" type="TextureRect" parent="backgorund"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CompressedTexture2D_3c5ih")
