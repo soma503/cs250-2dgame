@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlmayrogprxbi"]
 
-[ext_resource type="Script" path="res://src/level/objects/menus.gd" id="1_2swej"]
-[ext_resource type="Script" path="res://src/player/death_menu.gd" id="2_io6ss"]
+[ext_resource type="Script" path="res://scripts/menus.gd" id="1_2swej"]
+[ext_resource type="Script" path="res://scripts/death_menu.gd" id="2_io6ss"]
 [ext_resource type="FontFile" uid="uid://dg0bdmkfq8uqx" path="res://assets/Dangrek-Regular.ttf" id="3_uppm8"]
-[ext_resource type="Script" path="res://src/player/pause_menu.gd" id="4_ngqh7"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="4_ngqh7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_swmrt"]
 
