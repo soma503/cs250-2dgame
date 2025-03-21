@@ -3,17 +3,13 @@ extends CharacterBody2D
 
 var direction: Vector2 = Vector2.ZERO
 
-const GRAVITY = 90
-const SPEED = 300.0
-
-
 @onready var double_jump = $DoubleJump
 var has_double_jump = true
 
 @onready var dash = $Dash
 var dash_duration = 0.2	
 
-@onready var menu = $menus2
+@onready var menu = $menus
 
 @onready var invin = $Invincibility
 

@@ -315,14 +315,14 @@ libraries = {
 position = Vector2(-1.83334, -4.375)
 shape = SubResource("RectangleShape2D_7bujn")
 
-[node name="menus2" parent="." instance=ExtResource("6_tdjyg")]
+[node name="menus" parent="." instance=ExtResource("6_tdjyg")]
 
 [node name="Dash" parent="." instance=ExtResource("2_bnniu")]
 
 [node name="Invincibility" parent="." instance=ExtResource("3_hhsew")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.25, 0.25)
+zoom = Vector2(0.6, 0.6)
 limit_left = -2350
 limit_top = -2990
 limit_right = 19500
