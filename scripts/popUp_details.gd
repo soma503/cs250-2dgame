@@ -24,7 +24,8 @@ func jumpInstruct():
 	
 func doubleInstruct():
 	timerStart()
-	label.text = ("Press JUMP twice \n to double jump")
+	canvas.texture = load("res://assets/UI Graphics/JumpIntro.png")
+	label.text = (" ")
 	
 func wallInstruct():
 	timerStart()
