@@ -6,19 +6,16 @@ func _ready() -> void:
 
 func paused():
 	set_visible(true)
-	get_parent().is_paused = true
-	get_parent().can_move = false
+	GameManager.is_paused = true
 
 func _on_resume_pressed() -> void:
 	set_visible(false)
-	get_parent().is_paused = false
-	get_parent().can_move = true
+	GameManager.is_paused = false
 
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()
 	GameManager.health = 3
-	get_parent().can_move = true
-	get_parent().is_paused = false
+	GameManager.is_paused = false
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
