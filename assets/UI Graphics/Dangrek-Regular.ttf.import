@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dg0bdmkfq8uqx"
-path="res://.godot/imported/Dangrek-Regular.ttf-d2e76b445283167a8af9751ca5d316b8.fontdata"
+path="res://.godot/imported/Dangrek-Regular.ttf-4f0ace6d18385b7b1e1d18b9696380cd.fontdata"
 
 [deps]
 
-source_file="res://assets/Dangrek-Regular.ttf"
-dest_files=["res://.godot/imported/Dangrek-Regular.ttf-d2e76b445283167a8af9751ca5d316b8.fontdata"]
+source_file="res://assets/UI Graphics/Dangrek-Regular.ttf"
+dest_files=["res://.godot/imported/Dangrek-Regular.ttf-4f0ace6d18385b7b1e1d18b9696380cd.fontdata"]
 
 [params]
 

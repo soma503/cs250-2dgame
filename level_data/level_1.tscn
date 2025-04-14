@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d4ew22ot4twe3"]
+[gd_scene load_steps=13 format=4 uid="uid://d4ew22ot4twe3"]
 
 [ext_resource type="Texture2D" uid="uid://sfetx0mw1ro" path="res://assets/Level Graphics/tilesheet350x350.png" id="1_oau2d"]
 [ext_resource type="Texture2D" uid="uid://b4ct6hn28borj" path="res://assets/250x250tilesheetplatforms.png" id="2_0bu32"]
@@ -709,6 +709,24 @@ func _on_body_entered(body: Node2D) -> void:
 	get_node(\"CanvasLayer\").dashInstruct()
 "
 
+[sub_resource type="GDScript" id="GDScript_nrbes"]
+resource_local_to_scene = true
+script/source = "extends Node
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	#print(\"pop1\")
+	get_node(\"CanvasLayer\").doubleInstruct()
+"
+
 [node name="lvlonetilemap" type="Node2D"]
 
 [node name="lvloneplatform" type="TileMapLayer" parent="."]
@@ -728,6 +746,10 @@ script = SubResource("GDScript_vd7r0")
 [node name="popUps3" parent="PopUps" instance=ExtResource("3_c70os")]
 position = Vector2(1254, -36)
 script = SubResource("GDScript_3tsds")
+
+[node name="popUps4" parent="PopUps" instance=ExtResource("3_c70os")]
+position = Vector2(10244, -1009)
+script = SubResource("GDScript_nrbes")
 
 [node name="Coins" type="Node" parent="."]
 

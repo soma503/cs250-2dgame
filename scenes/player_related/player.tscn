@@ -413,7 +413,7 @@ shape = SubResource("RectangleShape2D_7bujn")
 zoom = Vector2(0.6, 0.6)
 limit_left = -2350
 limit_top = -5550
-limit_right = 19500
+limit_right = 24835
 limit_bottom = 500
 
 [node name="Coins" type="Label" parent="Camera2D"]
