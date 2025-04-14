@@ -1,21 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://c816wdwqbxuq6"]
+[gd_scene load_steps=3 format=3 uid="uid://dxwtw61p5nydp"]
 
-[ext_resource type="Script" path="res://scripts/spike.gd" id="1_gqjb1"]
 [ext_resource type="Texture2D" uid="uid://nl4ivm6iq8ie" path="res://assets/833x721.png" id="2_buenu"]
+
+[sub_resource type="GDScript" id="GDScript_670ws"]
+script/source = "extends Area2D
+var spike_damage = 1
+@onready var health = $health
+
+func _on_hitbox_area_entered(area):
+	if area is HitboxComponent:
+		var hitbox : HitboxComponent = area
+		var attack = Attack.new()
+		attack.attack_damage = spike_damage
+		
+		area.damage(attack)
+"
 
 [node name="spike" type="Area2D"]
 position = Vector2(163, 86)
-script = ExtResource("1_gqjb1")
+script = SubResource("GDScript_670ws")
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="."]
 position = Vector2(2.1801, -40.3388)
 rotation = -3.14159
 scale = Vector2(0.738894, -1.23122)
-polygon = PackedVector2Array(2.95047, 23.0169, 20.5443, 41.6976, -15.9967, 41.6976)
+polygon = PackedVector2Array(2.95047, 23.0169, 20.5443, 41.6976, -14.6436, 42.5097)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.999997, -2.25992)
 rotation = 3.14159
-scale = Vector2(0.0338334, -0.0317345)
+scale = Vector2(0.0338334, -0.0352294)
 texture = ExtResource("2_buenu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

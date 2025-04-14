@@ -1,5 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://cjmjm576tv8rh"]
 
+
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://scenes/player_related/dash.tscn" id="2_bnniu"]
 [ext_resource type="Texture2D" uid="uid://dohc4akcrtyvl" path="res://assets/Player Graphics/idle.png" id="3_g712r"]
@@ -7,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dtx7g1t8skede" path="res://assets/Player Graphics/crouch.png" id="3_wsdmi"]
 [ext_resource type="Texture2D" uid="uid://kmt323nf8452" path="res://assets/Player Graphics/run.png" id="5_uwj7v"]
 [ext_resource type="PackedScene" uid="uid://myg2mlperxc0" path="res://scenes/menu_related/menus.tscn" id="6_tdjyg"]
+
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="8_5701x"]
+[ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="9_vrjkj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
+size = Vector2(38.3333, 58.75)
 
 [sub_resource type="Shader" id="Shader_klsoi"]
 code = "shader_type canvas_item;
@@ -331,61 +338,24 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="Animation" id="Animation_jwatu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("ShaderMaterial_gvm8e")]
-}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjwp8"]
+radius = 20.0
+height = 67.5
 
-[sub_resource type="Animation" id="Animation_7v22d"]
-resource_name = "flash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("ShaderMaterial_gvm8e"), SubResource("ShaderMaterial_gvm8e")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8n8f"]
-_data = {
-"RESET": SubResource("Animation_jwatu"),
-"flash": SubResource("Animation_7v22d")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
-size = Vector2(38.3333, 58.75)
-
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Menus"]]
 position = Vector2(592, 147)
 scale = Vector2(3, 4)
 script = ExtResource("1_0eovg")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1.83334, -4.375)
+shape = SubResource("RectangleShape2D_7bujn")
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="Dash" parent="Abilities" instance=ExtResource("2_bnniu")]
+
+[node name="Invincibility" parent="Abilities" instance=ExtResource("3_hhsew")]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_gvm8e")
@@ -403,11 +373,7 @@ libraries = {
 position = Vector2(-1.83334, -4.375)
 shape = SubResource("RectangleShape2D_7bujn")
 
-[node name="menus" parent="." instance=ExtResource("6_tdjyg")]
-
-[node name="Dash" parent="." instance=ExtResource("2_bnniu")]
-
-[node name="Invincibility" parent="." instance=ExtResource("3_hhsew")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
@@ -424,6 +390,7 @@ offset_bottom = -35.25
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="Label" parent="Camera2D"]
 unique_name_in_owner = true
@@ -432,3 +399,15 @@ offset_top = -82.25
 offset_right = 34.3333
 offset_bottom = -59.25
 text = "Health: 3"
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("8_5701x")
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("9_vrjkj")
+health_component = NodePath("../HealthComponent")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-2.33333, -5.5)
+shape = SubResource("CapsuleShape2D_hjwp8")
