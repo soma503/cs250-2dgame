@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4lief0ilnxgd"]
+
+[ext_resource type="Texture2D" uid="uid://d4dyra74ymvye" path="res://assets/Level Graphics/startScreen.png" id="1_vjtge"]
+
+[node name="Start" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartScreen" type="Sprite2D" parent="."]
+position = Vector2(959, 562)
+texture = ExtResource("1_vjtge")

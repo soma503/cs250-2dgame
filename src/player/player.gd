@@ -132,6 +132,10 @@ func handle_animation(input_axis):
 		animated_sprite.play("idle") 
 		#animated_sprite.fliph is only ever updated if we choose a different direction with key input
 		#	so no need to update it anywhere else outside of when we choose our direction with our key input
+	
+	#if I wanted to add a dash animation, mayb just a dash sound sound be nice
+	#if dash.is_dashing():
+		#animated_sprite.play("dash")
 		
 	if not is_on_floor():
 		animated_sprite.play("jumping")

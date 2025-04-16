@@ -2,21 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream:assets/idle.png.import
-uid="uid://dohc4akcrtyvl"
-path="res://.godot/imported/idle.png-600a6709c1a21ab5f528af7b11a02560.ctex"
-=======
-uid="uid://dilptahiwm56p"
-path="res://.godot/imported/idle.png-19eb7c27d5b093129787550f560aa31c.ctex"
->>>>>>> Stashed changes:assets/Player Graphics/idle.png.import
+uid="uid://d4dyra74ymvye"
+path="res://.godot/imported/startScreen.png-75eec42ad8c7d01587cd433d06e1165d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/idle.png"
-dest_files=["res://.godot/imported/idle.png-600a6709c1a21ab5f528af7b11a02560.ctex"]
+source_file="res://assets/Level Graphics/startScreen.png"
+dest_files=["res://.godot/imported/startScreen.png-75eec42ad8c7d01587cd433d06e1165d.ctex"]
 
 [params]
 
