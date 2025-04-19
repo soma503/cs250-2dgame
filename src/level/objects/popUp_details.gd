@@ -14,12 +14,12 @@ func _process(delta: float) -> void:
 
 func moveInstruct():
 	timerStart()
-	canvas.texture = load("res://assets/PopUpIntro.png")
+	canvas.texture = load("res://assets/menuGraphics/PopUpIntro.png")
 	label.text = (" ")
 	
 func jumpInstruct():
 	timerStart()
-	canvas.texture = load("res://assets/JumpIntro.png")
+	canvas.texture = load("res://assets/menuGraphics/JumpIntro.png")
 	label.text = (" ")
 	
 func doubleInstruct():

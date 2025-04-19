@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/level/objects/popUp_details.gd" id="1_qf80u"]
 [ext_resource type="FontFile" uid="uid://dg0bdmkfq8uqx" path="res://assets/Dangrek-Regular.ttf" id="2_ghedf"]
-[ext_resource type="Texture2D" uid="uid://cqp8536yt5y5g" path="res://assets/popUpBlank.png" id="2_hl8fw"]
+[ext_resource type="Texture2D" uid="uid://cqp8536yt5y5g" path="res://assets/menuGraphics/popUpBlank.png" id="2_hl8fw"]
 
 [sub_resource type="GDScript" id="GDScript_q3bym"]
 resource_local_to_scene = true
