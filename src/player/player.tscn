@@ -585,7 +585,7 @@ shape = SubResource("RectangleShape2D_7bujn")
 [node name="Invincibility" parent="." instance=ExtResource("3_hhsew")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.25, 0.25)
+zoom = Vector2(0.3, 0.3)
 limit_left = -2750
 limit_top = -5775
 limit_right = 19500
