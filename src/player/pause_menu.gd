@@ -16,7 +16,8 @@ func _on_resume_pressed() -> void:
 
 func _on_retry_pressed() -> void:
 	get_tree().reload_current_scene()
-	GameManager.health = 3
+	GameManager.health = GameManager.finalHealth
+	GameManager.coins = GameManager.finalCoins
 	get_parent().can_move = true
 	get_parent().is_paused = false
 

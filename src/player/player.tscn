@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=83 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://src/player/abilities/dash.tscn" id="2_bnniu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dtx7g1t8skede" path="res://assets/playerGraphics/crouch.png" id="3_wsdmi"]
 [ext_resource type="Texture2D" uid="uid://cy03u12cpm2wn" path="res://assets/playerGraphics/idleAnimation.png" id="4_1nimp"]
 [ext_resource type="Texture2D" uid="uid://dkjn4djn8bari" path="res://assets/playerGraphics/runAnimation.png" id="5_445kd"]
+[ext_resource type="Texture2D" uid="uid://c818reih3cb1x" path="res://assets/playerGraphics/jumpAnimation.png" id="6_01x8w"]
 [ext_resource type="PackedScene" uid="uid://myg2mlperxc0" path="res://src/level/objects/menus.tscn" id="6_tdjyg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gvm8e"]
@@ -202,9 +203,9 @@ region = Rect2(252, 0, 252, 252)
 atlas = ExtResource("4_1nimp")
 region = Rect2(0, 0, 252, 252)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1c8k2"]
-atlas = ExtResource("5_445kd")
-region = Rect2(252, 756, 252, 252)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuepk"]
+atlas = ExtResource("6_01x8w")
+region = Rect2(750, 0, 250, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ic3ll"]
 atlas = ExtResource("5_445kd")
@@ -437,11 +438,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1c8k2")
+"texture": SubResource("AtlasTexture_vuepk")
 }],
 "loop": true,
 "name": &"jumping",
-"speed": 5.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -567,7 +568,7 @@ material = SubResource("ShaderMaterial_gvm8e")
 position = Vector2(-0.95342, -5.17553)
 scale = Vector2(0.335628, 0.264153)
 sprite_frames = SubResource("SpriteFrames_hb6sx")
-animation = &"idle"
+animation = &"jumping"
 
 [node name="FlashAnimation" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
