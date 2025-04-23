@@ -13,8 +13,6 @@ var has_double_jump = true
 @onready var dash = $Dash
 var dash_duration = 0.2	
 
-@onready var menu = $menus2
-
 @onready var invin = $Invincibility
 
 @onready var animated_sprite = $Sprite2D
@@ -43,7 +41,7 @@ func _process(delta):
 
 func _physics_process(delta: float) -> void:
 	handle_pause()
-	if menu.can_move:
+	if Menus.can_move:
 		apply_gravity(delta)
 		handle_jump()
 		handle_wall_jump()
@@ -120,7 +118,7 @@ func get_sign(number):
 		
 func handle_pause():
 	if Input.is_action_pressed("menu"):
-		menu.pause()
+		Menus.pause()
 
 func handle_animation(input_axis):
 	#FRAME 5 AND 2 ARE THE SAME IN RUNNING ANIMATION (makes it look like he tap dancing lol)

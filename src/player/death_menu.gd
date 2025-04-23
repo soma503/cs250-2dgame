@@ -9,6 +9,7 @@ func died():
 	get_parent().can_move = false
 
 func _on_retry_pressed() -> void:
+	set_visible(false)
 	get_tree().reload_current_scene()
 	GameManager.health = 3
 	get_parent().can_move = true

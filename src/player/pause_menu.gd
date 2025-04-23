@@ -20,6 +20,7 @@ func _on_retry_pressed() -> void:
 	GameManager.coins = GameManager.finalCoins
 	get_parent().can_move = true
 	get_parent().is_paused = false
+	set_visible(false)
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

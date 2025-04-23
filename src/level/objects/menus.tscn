@@ -11,7 +11,6 @@
 script = ExtResource("1_osg5o")
 
 [node name="deathMenu" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("2_uht26")
 
 [node name="TextureRect2" type="TextureRect" parent="deathMenu"]
@@ -77,7 +76,6 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="pauseMenu" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("4_3x12l")
 
 [node name="TextureRect" type="TextureRect" parent="pauseMenu"]
