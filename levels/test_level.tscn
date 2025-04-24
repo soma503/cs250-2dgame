@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://ce8xupmvsi30o"]
+[gd_scene load_steps=15 format=4 uid="uid://ce8xupmvsi30o"]
 
 [ext_resource type="Texture2D" uid="uid://sfetx0mw1ro" path="res://assets/Level Graphics/tilesheet350x350.png" id="1_13w1o"]
 [ext_resource type="Texture2D" uid="uid://b4ct6hn28borj" path="res://assets/250x250tilesheetplatforms.png" id="2_ecw7w"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://myg2mlperxc0" path="res://scenes/menus.tscn" id="4_0cbyn"]
 [ext_resource type="PackedScene" uid="uid://dm8b25uletok5" path="res://scenes/popUps.tscn" id="5_js737"]
 [ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://scenes/coin.tscn" id="6_2m1cf"]
+[ext_resource type="PackedScene" uid="uid://cqju0q84s1cwq" path="res://scenes/checkPoint.tscn" id="6_aqvgo"]
 [ext_resource type="Texture2D" uid="uid://dnd1b0e2wtsuo" path="res://assets/level1Background.png" id="7_ulhkm"]
 [ext_resource type="PackedScene" uid="uid://bjla4dd1mgwmk" path="res://scenes/Spike.tscn" id="8_vkcyj"]
 
@@ -735,6 +736,9 @@ script = SubResource("GDScript_vd7r0")
 [node name="popUps3" parent="PopUps" instance=ExtResource("5_js737")]
 position = Vector2(1254, -36)
 script = SubResource("GDScript_3tsds")
+
+[node name="checkPoint" parent="PopUps" instance=ExtResource("6_aqvgo")]
+position = Vector2(24208, -1776)
 
 [node name="Coins" type="Node" parent="."]
 

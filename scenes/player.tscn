@@ -553,8 +553,8 @@ animation = &"idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
 limit_left = -2350
-limit_top = -2990
-limit_right = 19500
+limit_top = -5685
+limit_right = 24750
 limit_bottom = 500
 
 [node name="Coins" type="Label" parent="Camera2D"]
