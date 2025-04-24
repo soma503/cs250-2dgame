@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ce8xupmvsi30o"]
+[gd_scene load_steps=14 format=4 uid="uid://ce8xupmvsi30o"]
 
 [ext_resource type="Texture2D" uid="uid://sfetx0mw1ro" path="res://assets/Level Graphics/tilesheet350x350.png" id="1_13w1o"]
 [ext_resource type="Texture2D" uid="uid://b4ct6hn28borj" path="res://assets/250x250tilesheetplatforms.png" id="2_ecw7w"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://myg2mlperxc0" path="res://scenes/menus.tscn" id="4_0cbyn"]
 [ext_resource type="PackedScene" uid="uid://dm8b25uletok5" path="res://scenes/popUps.tscn" id="5_js737"]
 [ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://scenes/coin.tscn" id="6_2m1cf"]
-[ext_resource type="Texture2D" uid="uid://byyhp37dd55gu" path="res://assets/backdropLevel1.png" id="7_dgh7w"]
+[ext_resource type="Texture2D" uid="uid://dnd1b0e2wtsuo" path="res://assets/level1Background.png" id="7_ulhkm"]
 [ext_resource type="PackedScene" uid="uid://bjla4dd1mgwmk" path="res://scenes/Spike.tscn" id="8_vkcyj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v58ah"]
@@ -711,8 +711,6 @@ func _on_body_entered(body: Node2D) -> void:
 	get_node(\"CanvasLayer\").dashInstruct()
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3c5ih"]
-
 [node name="lvlonetilemap" type="Node2D"]
 
 [node name="lvloneplatform" type="TileMapLayer" parent="."]
@@ -752,34 +750,16 @@ scale = Vector2(5, 5)
 
 [node name="backgorund" type="Node" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="backgorund"]
-z_index = -1
-offset_left = -2496.0
-offset_top = -1612.0
-offset_right = 3072.0
-offset_bottom = 79.0
-texture = ExtResource("7_dgh7w")
+[node name="Parallax2D" type="Parallax2D" parent="backgorund"]
+repeat_size = Vector2(5000, 0)
+repeat_times = 6
+metadata/_edit_lock_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="backgorund"]
+[node name="Sprite2D" type="Sprite2D" parent="backgorund/Parallax2D"]
 z_index = -1
-offset_left = 3057.0
-offset_top = -1628.0
-offset_right = 11476.0
-offset_bottom = 92.0
-texture = ExtResource("7_dgh7w")
-
-[node name="TextureRect3" type="TextureRect" parent="backgorund"]
-z_index = -1
-offset_left = 15631.0
-offset_top = -2925.0
-offset_right = 24725.0
-offset_bottom = 56.0
-texture = ExtResource("7_dgh7w")
-
-[node name="TextureRect4" type="TextureRect" parent="backgorund"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("CompressedTexture2D_3c5ih")
+position = Vector2(10551, -2771)
+texture = ExtResource("7_ulhkm")
+metadata/_edit_lock_ = true
 
 [node name="Spike" parent="." instance=ExtResource("8_vkcyj")]
 position = Vector2(-624, -88)
