@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dm8b25uletok5" path="res://scenes/popUps.tscn" id="5_js737"]
 [ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://scenes/coin.tscn" id="6_2m1cf"]
 [ext_resource type="PackedScene" uid="uid://cqju0q84s1cwq" path="res://scenes/checkPoint.tscn" id="6_aqvgo"]
-[ext_resource type="Texture2D" uid="uid://dnd1b0e2wtsuo" path="res://assets/level1Background.png" id="7_ulhkm"]
+[ext_resource type="Texture2D" uid="uid://dnd1b0e2wtsuo" path="res://assets/Level Graphics/level1Background.png" id="7_ulhkm"]
 [ext_resource type="PackedScene" uid="uid://bjla4dd1mgwmk" path="res://scenes/Spike.tscn" id="8_vkcyj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v58ah"]
