@@ -550,14 +550,7 @@ animation = &"idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.6, 0.6)
-limit_left = -2350
-limit_top = -5685
-limit_right = 24750
-limit_bottom = 500
-
-[node name="Coins" type="Label" parent="Camera2D"]
+[node name="Coins" type="Label" parent="."]
 offset_left = -21.3333
 offset_top = -63.25
 offset_right = 18.6667
@@ -567,7 +560,7 @@ text = "0"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Health" type="Label" parent="Camera2D"]
+[node name="Health" type="Label" parent="."]
 unique_name_in_owner = true
 offset_left = -35.6667
 offset_top = -82.25
@@ -575,6 +568,14 @@ offset_right = 34.3333
 offset_bottom = -59.25
 text = "Health: 3"
 metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+limit_left = -2350
+limit_top = -5685
+limit_right = 24750
+limit_bottom = 500
+drag_vertical_enabled = true
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("8_5701x")

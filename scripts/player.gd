@@ -34,7 +34,7 @@ var double_jump_force = 2600
 func _process(delta):
 	$"%Health".text= "Health: " + str(GameManager.health)
 	#COINS
-	$"Camera2D/Coins".text = str(GameManager.coins)
+	$"Coins".text = str(GameManager.coins)
 	
 
 func _physics_process(delta: float) -> void:
