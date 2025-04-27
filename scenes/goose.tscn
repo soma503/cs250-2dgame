@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt4tkww2mpq47"]
+
+[ext_resource type="Texture2D" uid="uid://dy0c86pihjimm" path="res://assets/250x250_placeholder.png" id="1_gi6fs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sm0w"]
+size = Vector2(251, 250)
+
+[node name="Goose" type="CharacterBody2D"]
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_0sm0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gi6fs")
