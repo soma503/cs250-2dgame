@@ -78,7 +78,18 @@ func aggro_towards():
 func apply_gravity(delta):
 	if not is_on_floor():
 		velocity.y += GameManager.gravity * delta
+		
+func handle_attack():
+	if can_attack and (count % 2 != 0 ):
+		if target_hitbox_comp != null:
+			target_hitbox_comp.damage(attack)
+		can_attack = false
+		attack_cooldown.start()
 
+# _on_detect_area_body_entered 
+# Function is called when a body enters the DetectArea
+# Sets target to the  body tha is entered if it is the player
+# Sets sees_player to true if the body entered is a player
 func _on_detect_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Player'):
 		target = body
@@ -86,25 +97,31 @@ func _on_detect_area_body_entered(body: Node2D) -> void:
 	else:
 		sees_player = false
 
+# _on_detect_area_body_exited
+# Function is called when a body exits the DetectArea
+# Sets sees_player to false when the body exxits the DetectArea
 func _on_detect_area_body_exited(body: Node2D) -> void:
 	sees_player = false
 
+# _on_attack_area_area_entered
+# Function is called when player's hitbox component touches the goose's
+# If count is even, then the player has left the hitbox; odd if otherwise
+# Sets the target_hitbox_comp to the hitbox componenet of player
 func _on_attack_area_area_entered(area: Area2D) -> void:
-	count += 1
-	if area is HitboxComponent and (count % 2 != 0):
-		target_hitbox_comp = area
+	if area is HitboxComponent:
+		count += 1
+		if (count % 2 != 0):
+			target_hitbox_comp = area
 		
+# _on_attack_area_area_exited
+# Function is called when player's hitbox component exits the goose's
+# If count is even, then the player has left the hitbox; odd if otherwise
 func _on_attack_area_area_exited(area: Area2D) -> void:
-	target_hitbox_comp = null
-	can_attack = true
-	count += 1
+	if area is HitboxComponent:
+		target_hitbox_comp = null
+		can_attack = true
+		count += 1
 	
-func handle_attack():
-	if can_attack and (count % 2 != 0 ):
-		if target_hitbox_comp != null:
-			target_hitbox_comp.attack(attack)
-		can_attack = false
-		attack_cooldown.start()
-
+# _on
 func _on_attack_cooldown_timeout() -> void:
 	can_attack = true
