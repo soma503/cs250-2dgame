@@ -11,8 +11,8 @@ size = Vector2(251, 250)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0kvs"]
 size = Vector2(251, 250)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nupri"]
-size = Vector2(4000, 2000)
+[sub_resource type="CircleShape2D" id="CircleShape2D_qac2b"]
+radius = 500.0
 
 [node name="Goose" type="CharacterBody2D"]
 script = ExtResource("1_tmdv4")
@@ -40,17 +40,17 @@ debug_color = Color(0.953586, 5.77569e-07, 0.552807, 0.42)
 wait_time = 5.0
 autostart = true
 
-[node name="AI" type="Node" parent="."]
+[node name="DetectArea" type="Area2D" parent="."]
 
-[node name="DetectArea" type="Area2D" parent="AI"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea"]
+shape = SubResource("CircleShape2D_qac2b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DetectArea"]
-shape = SubResource("RectangleShape2D_nupri")
-
-[node name="ray_left" type="RayCast2D" parent="AI"]
+[node name="ray_left" type="RayCast2D" parent="."]
 position = Vector2(-127, 125)
 target_position = Vector2(0, 1)
 
-[node name="ray_right" type="RayCast2D" parent="AI"]
+[node name="ray_right" type="RayCast2D" parent="."]
 position = Vector2(126, 125)
 target_position = Vector2(0, 1)
+
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

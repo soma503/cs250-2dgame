@@ -527,7 +527,6 @@ radius = 20.0
 height = 67.5
 
 [node name="Player" type="CharacterBody2D" groups=["Menus"]]
-visible = false
 position = Vector2(592, 147)
 scale = Vector2(3, 4)
 script = ExtResource("1_0eovg")
