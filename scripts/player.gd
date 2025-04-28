@@ -11,8 +11,6 @@ var dash_duration = 0.2
 
 @onready var menu = $menus
 
-@onready var invin = $Abilities/Invincibility
-
 @onready var animated_sprite = $Sprite2D
 
 #stuff
@@ -32,10 +30,8 @@ var double_jump_force = 2600
 
 func _process(delta):
 	$"%Health".text= "Health: " + str(GameManager.health)
-	#COINS
 	$"Coins".text = str(GameManager.coins)
 	
-
 func _physics_process(delta: float) -> void:
 	if not GameManager.is_paused:
 		apply_gravity(delta)
@@ -111,8 +107,6 @@ func get_sign(number):
 		return 1
 	else:
 		return -1
-		
-
 
 func handle_animation(input_axis):
 	#FRAME 5 AND 2 ARE THE SAME IN RUNNING ANIMATION (makes it look like he tap dancing lol)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=82 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=81 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://scenes/dash.tscn" id="2_bnniu"]
-[ext_resource type="PackedScene" uid="uid://coluexsscex40" path="res://scenes/invincibility.tscn" id="3_hhsew"]
 [ext_resource type="Texture2D" uid="uid://dtx7g1t8skede" path="res://assets/Player Graphics/crouch.png" id="3_wsdmi"]
 [ext_resource type="Texture2D" uid="uid://bgjcbofhpcc73" path="res://assets/Player Graphics/idleAnimation.png" id="5_e3e8k"]
 [ext_resource type="Texture2D" uid="uid://slc0hsm1jisq" path="res://assets/Player Graphics/jumpAnimation.png" id="6_spt6b"]
@@ -540,8 +539,6 @@ shape = SubResource("RectangleShape2D_7bujn")
 [node name="Abilities" type="Node" parent="."]
 
 [node name="Dash" parent="Abilities" instance=ExtResource("2_bnniu")]
-
-[node name="Invincibility" parent="Abilities" instance=ExtResource("3_hhsew")]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_gvm8e")
