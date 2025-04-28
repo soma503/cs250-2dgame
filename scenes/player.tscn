@@ -526,9 +526,11 @@ animations = [{
 radius = 20.0
 height = 67.5
 
-[node name="Player" type="CharacterBody2D" groups=["Menus"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(592, 147)
 scale = Vector2(3, 4)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_0eovg")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]

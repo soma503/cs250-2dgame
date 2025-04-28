@@ -20,7 +20,6 @@ func _physics_process(delta: float) -> void:
 		timer.start()
 		
 func _on_area_2d_area_entered(area):
-	print("ENTERED!!!")
 	count += 1
 	if area is HitboxComponent and is_in_hitbox(count):
 		area_being_hit = area
