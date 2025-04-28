@@ -85,6 +85,13 @@ menu={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="Environment"
+2d_render/layer_2="Player"
+2d_render/layer_3="Interactions"
+2d_render/layer_4="Enemies"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.232868, 0.365567, 0.534802, 1)
