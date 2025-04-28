@@ -9,5 +9,6 @@ var coins = 0
 var score = 0
 var health = 3
 
+var gravity = 6000.0
 
 var is_paused = false

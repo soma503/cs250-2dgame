@@ -22,7 +22,6 @@ var acceleration = 3000.0
 var air_acceleration = 1500.0
 var air_friction = 4000.0
 var friction = 9000.0
-var gravity = 6000.0
 var jump_force = 2500
 var double_jump_force = 2600
 
@@ -56,7 +55,7 @@ func _physics_process(delta: float) -> void:
 
 func apply_gravity(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += GameManager.gravity * delta
 
 func handle_dash():
 	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing(): 

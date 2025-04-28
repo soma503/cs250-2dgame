@@ -1,15 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt4tkww2mpq47"]
+[gd_scene load_steps=8 format=3 uid="uid://dt4tkww2mpq47"]
 
 [ext_resource type="Texture2D" uid="uid://dy0c86pihjimm" path="res://assets/250x250_placeholder.png" id="1_gi6fs"]
+[ext_resource type="Script" path="res://scripts/goose.gd" id="1_tmdv4"]
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="2_qmudo"]
+[ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="4_4niw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0sm0w"]
 size = Vector2(251, 250)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0kvs"]
+size = Vector2(251, 250)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nupri"]
+size = Vector2(4000, 2000)
+
 [node name="Goose" type="CharacterBody2D"]
+script = ExtResource("1_tmdv4")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+position = Vector2(-0.5, 0)
+script = ExtResource("2_qmudo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gi6fs")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_0sm0w")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_gi6fs")
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("4_4niw6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_c0kvs")
+debug_color = Color(0.953586, 5.77569e-07, 0.552807, 0.42)
+
+[node name="RandomMovementTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="AI" type="Node" parent="."]
+
+[node name="DetectArea" type="Area2D" parent="AI"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AI/DetectArea"]
+shape = SubResource("RectangleShape2D_nupri")
+
+[node name="ray_left" type="RayCast2D" parent="AI"]
+position = Vector2(-127, 125)
+target_position = Vector2(0, 1)
+
+[node name="ray_right" type="RayCast2D" parent="AI"]
+position = Vector2(126, 125)
+target_position = Vector2(0, 1)
