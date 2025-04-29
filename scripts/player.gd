@@ -31,10 +31,12 @@ var double_jump_force = 2600
 #camera
 @onready var camera := $Camera2D as Camera2D
 
+
 func _process(delta):
-	$"%Health".text= "Health: " + str(GameManager.health)
+	$"Stats/Health".text= str(GameManager.health)
 	#COINS
-	$"Camera2D/Coins".text = str(GameManager.coins)
+	$"Stats/Coins".text = str(GameManager.coins)
+	%Stats.visible = true
 	
 
 func _physics_process(delta: float) -> void:
@@ -43,6 +45,7 @@ func _physics_process(delta: float) -> void:
 		handle_jump()
 		handle_wall_jump()
 		handle_dash()
+		#set_camera_limits()
 	
 		var input_axis = Input.get_axis("left", "right")
 		
@@ -113,7 +116,12 @@ func get_sign(number):
 	else:
 		return -1
 		
-
+		
+func set_camera_limits(left, right, top, bottom) -> void:
+	camera.limit_left = left
+	camera.limit_right = right
+	camera.limit_top = top
+	camera.limit_bottom = bottom
 
 func handle_animation(input_axis):
 	#FRAME 5 AND 2 ARE THE SAME IN RUNNING ANIMATION (makes it look like he tap dancing lol)

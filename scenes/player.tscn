@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=86 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://scenes/dash.tscn" id="2_bnniu"]
@@ -7,8 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bgjcbofhpcc73" path="res://assets/Player Graphics/idleAnimation.png" id="5_e3e8k"]
 [ext_resource type="Texture2D" uid="uid://slc0hsm1jisq" path="res://assets/Player Graphics/jumpAnimation.png" id="6_spt6b"]
 [ext_resource type="Texture2D" uid="uid://d1ipux1k46sg3" path="res://assets/Player Graphics/runAnimation.png" id="7_2vbtl"]
+[ext_resource type="FontFile" uid="uid://dg0bdmkfq8uqx" path="res://assets/Dangrek-Regular.ttf" id="8_36rlw"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="8_5701x"]
+[ext_resource type="Texture2D" uid="uid://em46yvvgy2v" path="res://assets/Level Graphics/coin.png" id="9_m58ub"]
 [ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="9_vrjkj"]
+[ext_resource type="Texture2D" uid="uid://4w5d8et2pdou" path="res://assets/Level Graphics/heart.png" id="10_3dhcp"]
+[ext_resource type="Texture2D" uid="uid://cqp8536yt5y5g" path="res://assets/UI Graphics/popUpBlank.png" id="10_qd2ii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
 size = Vector2(38.3333, 58.75)
@@ -557,25 +561,6 @@ limit_top = -5685
 limit_right = 24750
 limit_bottom = 500
 
-[node name="Coins" type="Label" parent="Camera2D"]
-offset_left = -21.3333
-offset_top = -63.25
-offset_right = 18.6667
-offset_bottom = -35.25
-theme_override_font_sizes/font_size = 20
-text = "0"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Health" type="Label" parent="Camera2D"]
-unique_name_in_owner = true
-offset_left = -35.6667
-offset_top = -82.25
-offset_right = 34.3333
-offset_bottom = -59.25
-text = "Health: 3"
-metadata/_edit_use_anchors_ = true
-
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("8_5701x")
 
@@ -586,3 +571,48 @@ health_component = NodePath("../HealthComponent")
 [node name="Hurtbox" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-2.33333, -5.5)
 shape = SubResource("CapsuleShape2D_hjwp8")
+
+[node name="Stats" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Stats"]
+visible = false
+modulate = Color(1, 1, 1, 0.584314)
+z_index = -7
+position = Vector2(237, 142.5)
+scale = Vector2(0.884, 1.345)
+texture = ExtResource("10_qd2ii")
+
+[node name="Coins" type="Label" parent="Stats"]
+z_index = 1
+offset_left = 131.0
+offset_top = 126.0
+offset_right = 299.0
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_36rlw")
+theme_override_font_sizes/font_size = 50
+text = "COINS 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="coinIcon" type="Sprite2D" parent="Stats/Coins"]
+position = Vector2(-61, 42)
+scale = Vector2(0.412, 0.412)
+texture = ExtResource("9_m58ub")
+
+[node name="Health" type="Label" parent="Stats"]
+unique_name_in_owner = true
+offset_left = 127.0
+offset_top = 20.0
+offset_right = 316.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_36rlw")
+theme_override_font_sizes/font_size = 50
+text = "HEALTH 3"
+metadata/_edit_use_anchors_ = true
+
+[node name="healthIcon" type="Sprite2D" parent="Stats/Health"]
+position = Vector2(-56, 47)
+scale = Vector2(0.408, 0.408)
+texture = ExtResource("10_3dhcp")
