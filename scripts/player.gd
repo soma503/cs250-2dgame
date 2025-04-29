@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+class_name Player
 
 @onready var double_jump = $DoubleJump
 @onready var menu = $menus
