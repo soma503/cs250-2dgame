@@ -1,0 +1,3 @@
+extends AnimationPlayer
+
+class_name HitFlashAnimation

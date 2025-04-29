@@ -1,33 +1,23 @@
-[gd_scene load_steps=81 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=85 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://scenes/dash.tscn" id="2_bnniu"]
+[ext_resource type="Shader" uid="uid://bp21jbokeh0jd" path="res://shaders/hit_flash.tres" id="3_4lrtt"]
 [ext_resource type="Texture2D" uid="uid://dtx7g1t8skede" path="res://assets/Player Graphics/crouch.png" id="3_wsdmi"]
 [ext_resource type="Texture2D" uid="uid://bgjcbofhpcc73" path="res://assets/Player Graphics/idleAnimation.png" id="5_e3e8k"]
 [ext_resource type="Texture2D" uid="uid://slc0hsm1jisq" path="res://assets/Player Graphics/jumpAnimation.png" id="6_spt6b"]
 [ext_resource type="Texture2D" uid="uid://d1ipux1k46sg3" path="res://assets/Player Graphics/runAnimation.png" id="7_2vbtl"]
+[ext_resource type="Script" path="res://scripts/hit_flash_animation_player.gd" id="8_3lt8e"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="8_5701x"]
 [ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="9_vrjkj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7bujn"]
 size = Vector2(38.3333, 58.75)
 
-[sub_resource type="Shader" id="Shader_klsoi"]
-code = "shader_type canvas_item;
-
-uniform vec4 flash_color : source_color;
-uniform float flash_value : hint_range(0.0, 1.0, 0.1);
-
-void fragment() {
-	vec4 texture_color = texture(TEXTURE, UV);
-	COLOR = mix(texture_color, flash_color, flash_value);
-	COLOR.a = texture_color.a;
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvm8e"]
-shader = SubResource("Shader_klsoi")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_value = null
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t281o"]
+shader = ExtResource("3_4lrtt")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a011t"]
 atlas = ExtResource("3_wsdmi")
@@ -521,6 +511,46 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="Animation" id="Animation_4pgnt"]
+length = 0.001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rta3d"]
+resource_name = "hit_flash"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_60hka"]
+_data = {
+"RESET": SubResource("Animation_4pgnt"),
+"hit_flash": SubResource("Animation_rta3d")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjwp8"]
 radius = 20.0
 height = 67.5
@@ -541,13 +571,18 @@ shape = SubResource("RectangleShape2D_7bujn")
 [node name="Dash" parent="Abilities" instance=ExtResource("2_bnniu")]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_gvm8e")
+material = SubResource("ShaderMaterial_t281o")
 position = Vector2(-0.95342, -5.17553)
 scale = Vector2(0.335628, 0.264153)
 sprite_frames = SubResource("SpriteFrames_hb6sx")
 animation = &"idle"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_60hka")
+}
+script = ExtResource("8_3lt8e")
 
 [node name="Coins" type="Label" parent="."]
 offset_left = -21.3333
@@ -560,7 +595,6 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Health" type="Label" parent="."]
-unique_name_in_owner = true
 offset_left = -35.6667
 offset_top = -82.25
 offset_right = 34.3333
@@ -576,8 +610,9 @@ limit_right = 24750
 limit_bottom = 500
 drag_vertical_enabled = true
 
-[node name="HealthComponent" type="Node2D" parent="."]
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("hit_flash")]
 script = ExtResource("8_5701x")
+hit_flash = NodePath("../HitFlashAnimationPlayer")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("9_vrjkj")

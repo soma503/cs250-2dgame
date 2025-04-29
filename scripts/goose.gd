@@ -28,7 +28,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not GameManager.is_paused:
 		if sees_player:
-			print("SEES PLAYER SEES PLAYER")
 			aggro_towards()
 		else:
 			patrol()
@@ -119,7 +118,6 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 func _on_attack_area_area_exited(area: Area2D) -> void:
 	if area is HitboxComponent:
 		target_hitbox_comp = null
-		can_attack = true
 		count += 1
 	
 # _on

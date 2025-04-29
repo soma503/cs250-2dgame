@@ -1,19 +1,13 @@
 extends CharacterBody2D
-@onready var flash_animation: AnimationPlayer = $Sprite2D/FlashAnimation
 
-var direction: Vector2 = Vector2.ZERO
+
 
 @onready var double_jump = $DoubleJump
-var has_double_jump = true
-
-@onready var dash = $Abilities/Dash
-var dash_duration = 0.2	
-
 @onready var menu = $menus
-
+@onready var dash = $Abilities/Dash
 @onready var animated_sprite = $Sprite2D
+@onready var camera := $Camera2D as Camera2D
 
-#stuff
 var speed = 2000.0
 var dash_speed = 3000
 var acceleration = 3000.0
@@ -22,14 +16,16 @@ var air_friction = 4000.0
 var friction = 9000.0
 var jump_force = 2500
 var double_jump_force = 2600
-
+var direction: Vector2 = Vector2.ZERO
+var has_double_jump = true
+var dash_duration = 0.2	
 
 
 #camera
-@onready var camera := $Camera2D as Camera2D
+
 
 func _process(delta):
-	$"%Health".text= "Health: " + str(GameManager.health)
+	$"Health".text= "Health: " + str(GameManager.health)
 	$"Coins".text = str(GameManager.coins)
 	
 func _physics_process(delta: float) -> void:
@@ -55,6 +51,7 @@ func apply_gravity(delta):
 
 func handle_dash():
 	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing(): 
+		$HitFlashAnimationPlayer.play()
 		dash.start_dash(dash_duration)
 		
 func handle_jump():
@@ -109,16 +106,11 @@ func get_sign(number):
 		return -1
 
 func handle_animation(input_axis):
-	#FRAME 5 AND 2 ARE THE SAME IN RUNNING ANIMATION (makes it look like he tap dancing lol)
-		
 	if input_axis != 0:
 		animated_sprite.flip_h = (input_axis < 0) #this sets the way sprite is facing
 		animated_sprite.play("running")
 	else:
 		animated_sprite.play("idle") 
-		#animated_sprite.fliph is only ever updated if we choose a different direction with key input
-		#	so no need to update it anywhere else outside of when we choose our direction with our key input
-		
 	if not is_on_floor():
 		animated_sprite.play("jumping")
 		
