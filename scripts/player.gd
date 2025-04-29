@@ -6,7 +6,6 @@ extends CharacterBody2D
 @onready var menu = $menus
 @onready var dash = $Abilities/Dash
 @onready var animated_sprite = $Sprite2D
-@onready var camera := $Camera2D as Camera2D
 
 var speed = 2000.0
 var dash_speed = 3000
@@ -19,9 +18,6 @@ var double_jump_force = 2600
 var direction: Vector2 = Vector2.ZERO
 var has_double_jump = true
 var dash_duration = 0.2	
-
-
-#camera
 
 
 func _process(delta):
