@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		handle_movement()
 		
 		move_and_slide()
-		
+
 func handle_movement():
 	print( abs(position.y - initial_position.y) )
 	#BUG once it hits the height limit, it stops moving
