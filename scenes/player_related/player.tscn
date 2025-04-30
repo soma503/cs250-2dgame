@@ -278,9 +278,9 @@ animation = &"jumping"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.6, 0.6)
 limit_left = -2350
-limit_top = -2990
-limit_right = 19500
-limit_bottom = 500
+limit_top = -25000
+limit_right = 25000
+limit_bottom = 1000
 
 [node name="Coins" type="Label" parent="Camera2D"]
 offset_left = -21.3333
