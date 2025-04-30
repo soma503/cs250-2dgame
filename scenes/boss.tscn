@@ -1,7 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://pqdopojvvp3x"]
+[gd_scene load_steps=10 format=3 uid="uid://pqdopojvvp3x"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_tgux8"]
 [ext_resource type="Texture2D" uid="uid://dy0c86pihjimm" path="res://assets/250x250_placeholder.png" id="1_xaawh"]
+
+[sub_resource type="Animation" id="Animation_6eq64"]
+resource_name = "grow"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(2.744, 3.272)]
+}
+
+[sub_resource type="Animation" id="Animation_rpwcf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.744, 3.272)]
+}
+
+[sub_resource type="Animation" id="Animation_tkm40"]
+resource_name = "shrink"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.744, 3.272), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1nma5"]
+_data = {
+"RESET": SubResource("Animation_rpwcf"),
+"grow": SubResource("Animation_6eq64"),
+"shrink": SubResource("Animation_tkm40")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esru2"]
 size = Vector2(250.37, 254.063)
@@ -10,17 +64,24 @@ size = Vector2(250.37, 254.063)
 size = Vector2(3809, 317)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxy8t"]
-size = Vector2(675, 84)
+size = Vector2(675, 39)
 
 [node name="Boss" type="CharacterBody2D"]
 z_index = 3
-collision_layer = 8
+collision_layer = 16
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_tgux8")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_1nma5")
+}
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.716, 3.264)
+position = Vector2(2, 3.05176e-05)
+scale = Vector2(2.744, 3.272)
 texture = ExtResource("1_xaawh")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -36,18 +97,29 @@ shape = SubResource("RectangleShape2D_v8yxi")
 debug_color = Color(0.984314, 0, 0, 0.419608)
 
 [node name="StompArea" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
-position = Vector2(0, -449)
+position = Vector2(0, -426.5)
 shape = SubResource("RectangleShape2D_jxy8t")
 debug_color = Color(0, 0.636242, 0.407339, 0.42)
+
+[node name="StompedCooldown" type="Timer" parent="."]
+one_shot = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
 
-[node name="PhaseDuration" type="Timer" parent="."]
-wait_time = 15.0
+[node name="StunnedTimer" type="Timer" parent="."]
+
+[node name="PhaseTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]
+[connection signal="body_exited" from="StompArea" to="." method="_on_stomp_area_body_exited"]
+[connection signal="timeout" from="StunnedTimer" to="." method="_on_stunned_timer_timeout"]
+[connection signal="timeout" from="PhaseTimer" to="." method="_on_phase_timer_timeout"]

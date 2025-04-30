@@ -12,8 +12,9 @@ func _ready() -> void:
 	attack.attack_damage = damage
 
 func _process(delta: float) -> void:
-	handle_movement(delta)
-	handle_environment_collision()
+	if not GameManager.is_paused:
+		handle_movement(delta)
+		handle_environment_collision()
 
 # handle_movement
 # Updates the position of the bullet using its speed

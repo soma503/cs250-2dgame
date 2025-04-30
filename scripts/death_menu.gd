@@ -6,7 +6,7 @@ func _ready():
 	
 func died():
 	set_visible(true)
-	get_parent().can_move = false
+	GameManager.is_paused = true
 
 #this will reload the current scene and reset the health, coins, and score to what it was before level started
 func _on_retry_pressed() -> void:
@@ -14,7 +14,7 @@ func _on_retry_pressed() -> void:
 	GameManager.health = GameManager.finalHealth
 	GameManager.coins = GameManager.finalCoins
 	GameManager.score = GameManager.finalScore
-	get_parent().can_move = true
+	GameManager.is_paused = false
 	set_visible(false)
 	
 

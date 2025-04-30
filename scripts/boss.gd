@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 const SPEED = 1500
+const MAX_HEALTH = 3
+const KNOCKBACK = Vector2(2000, 2000)
 
 enum phase  {
 	LOADING,
@@ -20,49 +22,60 @@ enum height {
 @export var feather : PackedScene
 
 @onready var attack_cooldown = $AttackCooldown
-@onready var phase_timer = $PhaseDuration
+@onready var phase_timer = $PhaseTimer
+@onready var stunned_timer = $StunnedTimer
+@onready var stomped_timer = $StompedCooldown
+@onready var animations = $AnimationPlayer
 
 var dir : Vector2
 var initial_position : Vector2
 var height_limit = 1000
 var can_attack = false
 var curr_phase = phase.LOADING
-var boss_health = 3
+var boss_health = MAX_HEALTH
 var curr_height = height.MIDDLE
+var was_stomped = false
+var phase_duration = 15
+var stunned_duration = 5
+var stomp_count = 0
 
 func _ready() -> void:
 	initial_position = position
+	phase_timer.wait_time = phase_duration
+	stunned_timer.wait_time = stunned_duration
+	attack_cooldown.wait_time = 3
 
 func _physics_process(delta: float) -> void:
 	if not GameManager.is_paused:
+		print("HEALTH:", boss_health) 
 		match curr_phase:
 			phase.LOADING:
 				# TODO add a loading phase... a setup phase where the bird does smthn and player can prepare
+				
+				animations.play("grow")
+				await get_tree().create_timer(3).timeout
+				phase_timer.start()
+				print("in fight phase")
 				curr_phase = phase.FIGHT
 			phase.FIGHT:
-				phase_timer.start()
 				handle_direction()
 				handle_movement()
 				handle_attack()
 				move_and_slide()
-				if phase_timer.is_stopped():
-					update_stunned_condition()
 					
 			phase.STUNNED:
-				# TODO way to actually do damage to boss
+				# logic is in _on_stomp_area_body_entered() func
+				print("IS STUNNED")
 				if boss_health <= 0:
 					curr_phase = phase.BEATEN
 					
 			phase.BEATEN:
+				animations.play("shrink")
+				await get_tree().create_timer(3).timeout
 				# TODO make an ending :p
-				pass
-
-func update_stunned_condition():
-	curr_phase = phase.STUNNED
 
 func update_difficulty():
-	attack_cooldown.wait_time -= 0.5
-	pass
+	attack_cooldown.wait_time -= 1
 
 func handle_movement():
 	if (curr_height == height.TOP) and (dir.y > 0):
@@ -80,9 +93,6 @@ func handle_height_limit():
 	else:
 		curr_height = height.MIDDLE
 
-func is_at_height_limit():
-	return abs(position.y - initial_position.y) < height_limit
-	
 # handle_direction
 # Updates the direction for the boss to travel based on player position
 func handle_direction():
@@ -95,11 +105,15 @@ func handle_attack():
 		shoot_burst()
 		attack_cooldown.start()
 		
+func handle_stomped():
+	boss_health -= 1
+	player.apply_knockback(KNOCKBACK)
+	update_difficulty()
+
 # shoot_burst
 # Instantiates 3 feathers, 0.5 sec apart, at the boss's location
 func shoot_burst():
 	for n in 3:
-		print("spawning dem")
 		var new_feather = feather.instantiate()
 		new_feather.global_transform = global_transform
 		get_parent().add_child(new_feather)
@@ -113,3 +127,25 @@ func _on_detect_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		can_attack = false
 		
+func _on_stomp_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group('Player') and (curr_phase == phase.STUNNED):
+		handle_stomped()
+		
+		if boss_health > 0:
+			phase_timer.start()
+			print("in fight phase")
+			curr_phase = phase.FIGHT
+		else:
+			print("ENDING")
+			curr_phase = phase.BEATEN
+
+func _on_stunned_timer_timeout() -> void:
+	if boss_health > 0 and (curr_phase != phase.FIGHT):
+		phase_timer.start()
+		print("in fight phase")
+		curr_phase = phase.FIGHT
+
+func _on_phase_timer_timeout() -> void:
+	stunned_timer.start()
+	print("in stunned phase")
+	curr_phase = phase.STUNNED

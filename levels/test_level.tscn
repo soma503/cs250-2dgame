@@ -780,4 +780,4 @@ visible = false
 position = Vector2(-624, -88)
 
 [node name="Goose" parent="." instance=ExtResource("5_n8hww")]
-position = Vector2(67, -645)
+position = Vector2(83, -663)

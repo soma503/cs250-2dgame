@@ -16,6 +16,7 @@ var double_jump_force = 2600
 var direction: Vector2 = Vector2.ZERO
 var has_double_jump = true
 var dash_duration = 0.2	
+var knocked_back = false
 
 
 func _process(delta):
@@ -25,17 +26,18 @@ func _process(delta):
 func _physics_process(delta: float) -> void:
 	if not GameManager.is_paused:
 		apply_gravity(delta)
-		handle_jump()
-		handle_wall_jump()
-		handle_dash()
-	
+		
 		var input_axis = Input.get_axis("left", "right")
 		
-		handle_acceleration(input_axis, delta)
-		handle_air_acceleration(input_axis, delta)
-		apply_friction(input_axis, delta)
-		apply_air_resistance(input_axis, delta)
-		
+		if not knocked_back:
+			handle_jump()
+			handle_wall_jump()
+			handle_dash()
+			handle_acceleration(input_axis, delta)
+			handle_air_acceleration(input_axis, delta)
+			apply_friction(input_axis, delta)
+			apply_air_resistance(input_axis, delta)
+			
 		move_and_slide()
 		handle_animation(input_axis)
 
@@ -45,8 +47,15 @@ func apply_gravity(delta):
 
 func handle_dash():
 	if Input.is_action_just_pressed("dash") and dash.can_dash and !dash.is_dashing(): 
-		$HitFlashAnimationPlayer.play()
 		dash.start_dash(dash_duration)
+
+func apply_knockback(knockback: Vector2):
+	knocked_back = true
+	velocity.x = knockback.x * -1
+	velocity.y = knockback.y * -1
+	await get_tree().create_timer(0.5).timeout
+	# ^ knocbakc duration
+	knocked_back = false
 		
 func handle_jump():
 	if Input.is_action_just_pressed("jump"):
