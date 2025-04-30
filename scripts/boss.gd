@@ -9,6 +9,13 @@ enum phase  {
 	BEATEN,
 }
 
+enum height {
+	TOP,
+	BOTTOM,
+	MIDDLE
+}
+
+
 @export var player : Player
 @export var feather : PackedScene
 
@@ -21,6 +28,7 @@ var height_limit = 1000
 var can_attack = false
 var curr_phase = phase.LOADING
 var boss_health = 3
+var curr_height = height.MIDDLE
 
 func _ready() -> void:
 	initial_position = position
@@ -57,12 +65,20 @@ func update_difficulty():
 	pass
 
 func handle_movement():
-	if is_at_height_limit():
-		velocity.y = SPEED * dir.y
-	else:
-	#BUG once it hits the height limit, it stops moving permanently
-	# needs some better logic
+	if (curr_height == height.TOP) and (dir.y > 0):
 		velocity.y = 0
+	elif (curr_height == height.BOTTOM) and (dir.y > 0):
+		velocity.y = 0
+	else:
+		velocity.y = SPEED * dir.y
+
+func handle_height_limit():
+	if (position.y - initial_position.y) > height_limit:
+		curr_height = height.TOP
+	elif (position.y - initial_position.y) < -height_limit:
+		curr_height = height.BOTTOM
+	else:
+		curr_height = height.MIDDLE
 
 func is_at_height_limit():
 	return abs(position.y - initial_position.y) < height_limit

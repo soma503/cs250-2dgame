@@ -1,9 +1,14 @@
 extends CharacterBody2D
 
-
 const JUMP_VELOCITY = -400.0
 const PATROL_SPEED = 300.0
 const AGGRO_SPEED = 600.0
+
+enum ledge {
+	NONE,
+	LEFT,
+	RIGHT,
+}
 
 var on_ledge = false
 var dir : Vector2
@@ -14,6 +19,7 @@ var attack : Attack
 var damage = 1
 var can_attack = false
 var count = 0
+var ledge_side = ledge.RIGHT
 
 
 @onready var rand_timer = $RandomMovementTimer  #prob not needed
@@ -48,13 +54,20 @@ func patrol():
 func update_direction_from_ledge():
 	if !left_ray.is_colliding():
 		dir.x = 1 #going right
-	if !right_ray.is_colliding():
+	elif !right_ray.is_colliding():
 		dir.x = -1 #going left
 		
 # update_direction_to_player
 # updates direction so that it is facing the player
 func update_direction_to_player():
 	dir = (target.position - position).normalized()
+	if !left_ray.is_colliding():
+		ledge_side = ledge.LEFT
+	elif !right_ray.is_colliding():
+		ledge_side = ledge.RIGHT
+	else:
+		ledge_side = ledge.NONE
+		
 
 # is_on_ledge
 # Checks if entity is on a ledge or not and returns a bool for the result
@@ -67,11 +80,13 @@ func is_on_ledge():
 # aggro_towards
 # uses aggro speed to update velocity to follow player
 func aggro_towards():
-	if is_on_ledge():
-		update_direction_to_player()
-		velocity.x = AGGRO_SPEED * dir.x
+	update_direction_to_player()	
+	# could prob compress both if and elif statements
+	if (dir.x > 0) and (ledge_side == ledge.RIGHT):
+		velocity.x = 0
+	elif (dir.x < 0) and (ledge_side == ledge.LEFT):
+		velocity.x = 0
 	else:
-		update_direction_from_ledge()
 		velocity.x = AGGRO_SPEED * dir.x
 		
 func apply_gravity(delta):
