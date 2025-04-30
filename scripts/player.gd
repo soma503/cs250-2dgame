@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 class_name Player
 
-@onready var double_jump = $DoubleJump
-@onready var menu = $menus
 @onready var dash = $Abilities/Dash
 @onready var animated_sprite = $Sprite2D
 
