@@ -26,6 +26,7 @@ var ledge_side = ledge.RIGHT
 @onready var left_ray = $ray_left
 @onready var right_ray = $ray_right
 @onready var attack_cooldown = $AttackArea/AttackCooldown
+@onready var animated_sprite = $Sprite2D
 
 func _ready() -> void:
 	attack = Attack.new()
@@ -35,8 +36,10 @@ func _physics_process(delta: float) -> void:
 	if not GameManager.is_paused:
 		if sees_player:
 			aggro_towards()
+			handle_animations()
 		else:
 			patrol()
+			handle_animations()
 			apply_gravity(delta)
 		
 		handle_attack()
@@ -108,14 +111,14 @@ func _on_detect_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Player'):
 		target = body
 		sees_player = true
-	else:
-		sees_player = false
+	
 
 # _on_detect_area_body_exited
 # Function is called when a body exits the DetectArea
 # Sets sees_player to false when the body exxits the DetectArea
 func _on_detect_area_body_exited(body: Node2D) -> void:
-	sees_player = false
+	if body.is_in_group('Player'):
+		sees_player = false
 
 # _on_attack_area_area_entered
 # Function is called when player's hitbox component touches the goose's
@@ -134,7 +137,23 @@ func _on_attack_area_area_exited(area: Area2D) -> void:
 	if area is HitboxComponent:
 		target_hitbox_comp = null
 		count += 1
-	
+		
 # _on
 func _on_attack_cooldown_timeout() -> void:
 	can_attack = true
+
+func handle_animations():
+	if not sees_player:
+		if dir.x < 0:
+			animated_sprite.flip_h = false
+			animated_sprite.play("patrol")
+		else:
+			animated_sprite.flip_h = true
+			animated_sprite.play("patrol")
+	else:
+		if dir.x < 0:
+			animated_sprite.flip_h = false
+			animated_sprite.play("aggro")
+		else:
+			animated_sprite.flip_h = true
+			animated_sprite.play("aggro")

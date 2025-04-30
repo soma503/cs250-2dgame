@@ -1,7 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://pqdopojvvp3x"]
+[gd_scene load_steps=23 format=3 uid="uid://pqdopojvvp3x"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_tgux8"]
-[ext_resource type="Texture2D" uid="uid://dy0c86pihjimm" path="res://assets/250x250_placeholder.png" id="1_xaawh"]
+[ext_resource type="Texture2D" uid="uid://ba4bmipxqv748" path="res://assets/goose_walk.png" id="2_dumsg"]
+
+[sub_resource type="Animation" id="Animation_rpwcf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.744, 3.272)]
+}
 
 [sub_resource type="Animation" id="Animation_6eq64"]
 resource_name = "grow"
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(2.744, 3.272)]
-}
-
-[sub_resource type="Animation" id="Animation_rpwcf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2.744, 3.272)]
 }
 
 [sub_resource type="Animation" id="Animation_tkm40"]
@@ -57,6 +57,98 @@ _data = {
 "shrink": SubResource("Animation_tkm40")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fogr"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb708"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(251, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52eti"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(502, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04wgl"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(753, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inxm2"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(1004, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wps84"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(1255, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trr5k"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(0, 251, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36k73"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(251, 251, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugswr"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(502, 251, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj03g"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(753, 251, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40ucv"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(1004, 251, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1xpe"]
+atlas = ExtResource("2_dumsg")
+region = Rect2(1255, 251, 250, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qicji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fogr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb708")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52eti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04wgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inxm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wps84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trr5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36k73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugswr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj03g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40ucv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1xpe")
+}],
+"loop": true,
+"name": &"patrol",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esru2"]
 size = Vector2(250.37, 254.063)
 
@@ -79,10 +171,12 @@ libraries = {
 "": SubResource("AnimationLibrary_1nma5")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 3.05176e-05)
 scale = Vector2(2.744, 3.272)
-texture = ExtResource("1_xaawh")
+sprite_frames = SubResource("SpriteFrames_qicji")
+animation = &"patrol"
+frame_progress = 0.925707
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2(2.7, 3.2)
