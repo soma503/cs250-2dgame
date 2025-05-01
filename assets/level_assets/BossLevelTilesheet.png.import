@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://877gqdigphd3"
-valid=false
+uid="uid://xdoqd26m083n"
+path="res://.godot/imported/BossLevelTilesheet.png-d1c8f73bd17431b96e1ae2e549db94d4.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/level_assets/cave_tileset.png"
+source_file="res://assets/level_assets/BossLevelTilesheet.png"
+dest_files=["res://.godot/imported/BossLevelTilesheet.png-d1c8f73bd17431b96e1ae2e549db94d4.ctex"]
 
 [params]
 

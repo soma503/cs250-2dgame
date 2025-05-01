@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5xlswxew7vm6"
-valid=false
+uid="uid://4a4yt7njd1ah"
+path="res://.godot/imported/CaveLevelTilesheet.png-bb440ba7b46bebd11ce75319915c0f25.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/level_assets/cave_background.png"
+source_file="res://assets/level_assets/CaveLevelTilesheet.png"
+dest_files=["res://.godot/imported/CaveLevelTilesheet.png-bb440ba7b46bebd11ce75319915c0f25.ctex"]
 
 [params]
 
