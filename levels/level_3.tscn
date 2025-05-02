@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://hg8pjdpvuffx"]
+[gd_scene load_steps=9 format=4 uid="uid://df3k5cm1i5pmn"]
 
 [ext_resource type="Texture2D" uid="uid://4a4yt7njd1ah" path="res://assets/level_assets/CaveLevelTilesheet.png" id="1_502fw"]
 [ext_resource type="PackedScene" uid="uid://cjmjm576tv8rh" path="res://scenes/player.tscn" id="2_e8574"]

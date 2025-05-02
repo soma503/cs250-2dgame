@@ -26,6 +26,7 @@ enum height {
 @onready var stunned_timer = $StunnedTimer
 @onready var stomped_timer = $StompedCooldown
 @onready var animations = $AnimationPlayer
+@onready var sprite = $Sprite2D
 
 var dir : Vector2
 var initial_position : Vector2
@@ -51,13 +52,14 @@ func _physics_process(delta: float) -> void:
 		match curr_phase:
 			phase.LOADING:
 				# TODO add a loading phase... a setup phase where the bird does smthn and player can prepare
-				
+				sprite.play("flying")
 				animations.play("grow")
 				await get_tree().create_timer(3).timeout
 				phase_timer.start()
 				print("in fight phase")
 				curr_phase = phase.FIGHT
 			phase.FIGHT:
+				sprite.play("flying")
 				handle_direction()
 				handle_movement()
 				handle_attack()
@@ -66,6 +68,7 @@ func _physics_process(delta: float) -> void:
 			phase.STUNNED:
 				# logic is in _on_stomp_area_body_entered() func
 				print("IS STUNNED")
+				sprite.play("stunned")
 				if boss_health <= 0:
 					curr_phase = phase.BEATEN
 					

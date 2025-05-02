@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://yyuy8h2pf4y2"]
 
 [ext_resource type="Script" path="res://scripts/feather_proj.gd" id="1_darri"]
-[ext_resource type="Texture2D" uid="uid://dy0c86pihjimm" path="res://assets/250x250_placeholder.png" id="1_m7lre"]
+[ext_resource type="Texture2D" uid="uid://rgktujsmcyrs" path="res://assets/feather.png" id="2_sjde0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl2aq"]
 size = Vector2(174, 43)
@@ -11,8 +11,8 @@ script = ExtResource("1_darri")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
-scale = Vector2(0.696, 0.176)
-texture = ExtResource("1_m7lre")
+rotation = 3.14159
+texture = ExtResource("2_sjde0")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
