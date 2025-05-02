@@ -143,8 +143,10 @@ position = Vector2(1254, -36)
 script = SubResource("GDScript_bgfg4")
 
 [node name="checkPoint" parent="PopUps" instance=ExtResource("6_7yvk6")]
+light_mask = 4
+visibility_layer = 2
 z_index = -1
-position = Vector2(22934, -1418)
+position = Vector2(22956, -1425)
 scene_path = "res://levels/level_2.tscn"
 
 [node name="Coins" type="Node" parent="."]
@@ -211,12 +213,14 @@ texture = ExtResource("8_srw74")
 
 [node name="Background" type="Parallax2D" parent="Background"]
 z_index = -1
+scroll_offset = Vector2(-8391, 1284)
 repeat_size = Vector2(5000, 0)
-repeat_times = 5
+repeat_times = 6
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
 z_index = -1
-position = Vector2(8990, -2803)
+position = Vector2(11625, -4171)
 texture = ExtResource("8_gl6ko")
 metadata/_edit_lock_ = true
 

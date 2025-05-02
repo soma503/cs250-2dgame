@@ -11,7 +11,4 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	get_tree().reload_current_scene()
-	GameManager.health = GameManager.finalHealth
-	GameManager.coins = GameManager.finalCoins
-	GameManager.score = GameManager.finalScore
+	GameManager.health = 0

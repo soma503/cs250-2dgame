@@ -1,29 +1,29 @@
 [gd_scene load_steps=8 format=3 uid="uid://cx88hepsjgmof"]
 
-[ext_resource type="Script" path="res://scripts/startScreen.gd" id="1_c3iqv"]
-[ext_resource type="Texture2D" uid="uid://bsx88hmgqwlgm" path="res://assets/Story Graphics/startScreen.png" id="1_v3pkv"]
-[ext_resource type="Texture2D" uid="uid://du3n1y1jq0wm2" path="res://assets/UI Graphics/menuBackground.png" id="3_la5qa"]
-[ext_resource type="FontFile" uid="uid://dg0bdmkfq8uqx" path="res://assets/Dangrek-Regular.ttf" id="4_v6hi1"]
-[ext_resource type="Texture2D" uid="uid://clw205s8vvpdp" path="res://assets/UI Graphics/button.png" id="5_srmw7"]
-[ext_resource type="Texture2D" uid="uid://5sx7iuauerfi" path="res://assets/Story Graphics/storyIntro1.PNG" id="6_fd6l4"]
-[ext_resource type="Texture2D" uid="uid://cfcpips1rlqsa" path="res://assets/Story Graphics/storyIntro9.PNG" id="7_1v7em"]
+[ext_resource type="Script" path="res://scripts/startScreen.gd" id="1_7loqm"]
+[ext_resource type="Texture2D" uid="uid://bsx88hmgqwlgm" path="res://assets/Story Graphics/startScreen.png" id="2_8lpc4"]
+[ext_resource type="Texture2D" uid="uid://du3n1y1jq0wm2" path="res://assets/UI Graphics/menuBackground.png" id="3_sgj1k"]
+[ext_resource type="FontFile" uid="uid://dg0bdmkfq8uqx" path="res://assets/Dangrek-Regular.ttf" id="4_1l6hq"]
+[ext_resource type="Texture2D" uid="uid://clw205s8vvpdp" path="res://assets/UI Graphics/button.png" id="5_vd1mw"]
+[ext_resource type="Texture2D" uid="uid://5sx7iuauerfi" path="res://assets/Story Graphics/storyIntro1.PNG" id="6_47tlq"]
+[ext_resource type="Texture2D" uid="uid://cfcpips1rlqsa" path="res://assets/Story Graphics/storyIntro9.PNG" id="7_bscvx"]
 
 [node name="startScreen" type="Node2D"]
-script = ExtResource("1_c3iqv")
+script = ExtResource("1_7loqm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
 [node name="StartScreen" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(960, 540)
-texture = ExtResource("1_v3pkv")
+texture = ExtResource("2_8lpc4")
 metadata/_edit_lock_ = true
 
 [node name="MenuBackground" type="Sprite2D" parent="CanvasLayer"]
 z_index = 2
 position = Vector2(430.25, 825)
 scale = Vector2(0.7695, 0.446)
-texture = ExtResource("3_la5qa")
+texture = ExtResource("3_sgj1k")
 metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer"]
@@ -34,10 +34,10 @@ offset_right = 776.0
 offset_bottom = 772.0
 theme_override_colors/font_hover_color = Color(0.945098, 0.87451, 0.631373, 1)
 theme_override_colors/font_color = Color(0.694118, 0.552941, 0.0980392, 1)
-theme_override_fonts/font = ExtResource("4_v6hi1")
+theme_override_fonts/font = ExtResource("4_1l6hq")
 theme_override_font_sizes/font_size = 60
 text = "NEW GAME"
-icon = ExtResource("5_srmw7")
+icon = ExtResource("5_vd1mw")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -46,12 +46,12 @@ expand_icon = true
 unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("6_fd6l4")
+texture = ExtResource("6_47tlq")
 
 [node name="DecisionScreen" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(962, 541)
-texture = ExtResource("7_1v7em")
+texture = ExtResource("7_bscvx")
 
 [node name="ButtonYes" type="Button" parent="DecisionScreen"]
 z_index = 2
@@ -61,10 +61,10 @@ offset_right = 332.0
 offset_bottom = 305.0
 theme_override_colors/font_hover_color = Color(0.945098, 0.87451, 0.631373, 1)
 theme_override_colors/font_color = Color(0.694118, 0.552941, 0.0980392, 1)
-theme_override_fonts/font = ExtResource("4_v6hi1")
+theme_override_fonts/font = ExtResource("4_1l6hq")
 theme_override_font_sizes/font_size = 60
 text = "YES"
-icon = ExtResource("5_srmw7")
+icon = ExtResource("5_vd1mw")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -77,11 +77,11 @@ offset_right = 333.0
 offset_bottom = 433.0
 theme_override_colors/font_hover_color = Color(0.945098, 0.87451, 0.631373, 1)
 theme_override_colors/font_color = Color(0.694118, 0.552941, 0.0980392, 1)
-theme_override_fonts/font = ExtResource("4_v6hi1")
+theme_override_fonts/font = ExtResource("4_1l6hq")
 theme_override_font_sizes/font_size = 60
 text = "NO
 "
-icon = ExtResource("5_srmw7")
+icon = ExtResource("5_vd1mw")
 flat = true
 icon_alignment = 1
 expand_icon = true
