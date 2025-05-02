@@ -48,17 +48,19 @@ func _physics_process(delta: float) -> void:
 # patrol
 # Changes motion of entity depending on which direction it is facing and if it on a ledge
 func patrol():
-	update_direction_from_ledge()
+	update_direction_for_patrol()
 	velocity.x = PATROL_SPEED * dir.x
 		
 
 # update_direction_from_ledge
 # Gets the direction of entity depending on if it has hit the end of a ledge and updates it
-func update_direction_from_ledge():
+func update_direction_for_patrol():
 	if !left_ray.is_colliding():
 		dir.x = 1 #going right
 	elif !right_ray.is_colliding():
 		dir.x = -1 #going left
+	elif is_on_wall():
+		dir.x = dir.x * -1
 		
 # update_direction_to_player
 # updates direction so that it is facing the player
