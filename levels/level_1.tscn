@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c4vly421o5l38"]
+[gd_scene load_steps=14 format=4 uid="uid://c4vly421o5l38"]
 
 [ext_resource type="Texture2D" uid="uid://c1yeho62inggb" path="res://assets/tileset1750x1750.png" id="1_ps8k5"]
 [ext_resource type="PackedScene" uid="uid://cjmjm576tv8rh" path="res://scenes/player.tscn" id="2_ue81l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dm8b25uletok5" path="res://scenes/popUps.tscn" id="5_prf4f"]
 [ext_resource type="PackedScene" uid="uid://cqju0q84s1cwq" path="res://scenes/checkPoint.tscn" id="6_7yvk6"]
 [ext_resource type="PackedScene" uid="uid://dt4tkww2mpq47" path="res://scenes/goose.tscn" id="7_b6yp4"]
+[ext_resource type="Texture2D" uid="uid://dnd1b0e2wtsuo" path="res://assets/Level Graphics/level1Background.png" id="8_gl6ko"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cm46v"]
 texture = ExtResource("1_ps8k5")
@@ -106,6 +107,31 @@ func _on_body_entered(body: Node2D) -> void:
 	get_node(\"CanvasLayer\").dashInstruct()
 "
 
+[sub_resource type="GDScript" id="GDScript_580oy"]
+script/source = "extends Area2D
+#You will need to make a new instance of this code for every checkpoint 
+#Later on, this is where we can add actually saving, but for now this just updates variable in gameManager
+
+@export var scene_path : String
+
+
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+#Transport to different scene/level. 
+#Updates the \"final\" versions of coins, health, and score to reflect what they collected in the level
+func _on_body_entered(body: Node2D) -> void:
+	get_tree().change_scene_to_file(\"res://levels/level_2.tscn\")
+	GameManager.finalCoins = GameManager.coins
+	GameManager.finalHealth = GameManager.health
+	GameManager.finalScore = GameManager.score
+"
+
 [node name="Level1" type="Node2D"]
 
 [node name="lvloneplatform" type="TileMapLayer" parent="."]
@@ -141,7 +167,7 @@ script = SubResource("GDScript_bgfg4")
 
 [node name="checkPoint" parent="PopUps" instance=ExtResource("6_7yvk6")]
 position = Vector2(23516, -1336)
-scene_path = "res://levels/level_2.tscn"
+script = SubResource("GDScript_580oy")
 
 [node name="Coins" type="Node" parent="."]
 
@@ -197,3 +223,13 @@ position = Vector2(11563, -655)
 
 [node name="Goose2" parent="Enemies" instance=ExtResource("7_b6yp4")]
 position = Vector2(20359, -403)
+
+[node name="Background" type="Parallax2D" parent="."]
+repeat_size = Vector2(5000, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+z_index = -1
+position = Vector2(8990, -2803)
+texture = ExtResource("8_gl6ko")
+metadata/_edit_lock_ = true

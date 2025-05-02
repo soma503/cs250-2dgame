@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://df3k5cm1i5pmn"]
+[gd_scene load_steps=10 format=4 uid="uid://df3k5cm1i5pmn"]
 
 [ext_resource type="Texture2D" uid="uid://4a4yt7njd1ah" path="res://assets/level_assets/CaveLevelTilesheet.png" id="1_502fw"]
 [ext_resource type="PackedScene" uid="uid://cjmjm576tv8rh" path="res://scenes/player.tscn" id="2_e8574"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cqju0q84s1cwq" path="res://scenes/checkPoint.tscn" id="4_j208j"]
 [ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://scenes/coin.tscn" id="5_cyatl"]
 [ext_resource type="PackedScene" uid="uid://dt4tkww2mpq47" path="res://scenes/goose.tscn" id="6_3f43k"]
+[ext_resource type="Texture2D" uid="uid://b1pc2fdx7qtfm" path="res://assets/Level Graphics/CaveLevelBackdrop.png" id="7_4vtd5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdmik"]
 texture = ExtResource("1_502fw")
@@ -80,11 +81,11 @@ position = Vector2(15, -135)
 
 [node name="Camera" type="Camera2D" parent="Player"]
 position = Vector2(0, -0.25)
-zoom = Vector2(0.5, 0.5)
-limit_left = -2350
-limit_top = -5685
-limit_right = 24750
-limit_bottom = 500
+zoom = Vector2(0.29, 0.25)
+limit_left = -1050
+limit_top = -3500
+limit_right = 12700
+limit_bottom = 750
 drag_vertical_enabled = true
 
 [node name="menus" parent="." instance=ExtResource("3_tciyd")]
@@ -167,3 +168,14 @@ position = Vector2(5682, 372)
 
 [node name="Goose3" parent="Enemies" instance=ExtResource("6_3f43k")]
 position = Vector2(10977, -126)
+
+[node name="Background" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(3650, 0)
+repeat_times = 6
+
+[node name="CaveLevelBackdrop" type="Sprite2D" parent="Background"]
+position = Vector2(3185, -1204)
+scale = Vector2(0.7319, 0.716284)
+texture = ExtResource("7_4vtd5")
+metadata/_edit_lock_ = true

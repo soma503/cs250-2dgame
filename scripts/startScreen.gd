@@ -34,7 +34,7 @@ func _story_progess() -> void:
 
 #when yes button is pressed, will load player into level 1
 func _on_button_yes_pressed() -> void:
-	get_tree().change_scene_to_file("res://levels/test_level.tscn")
+	get_tree().change_scene_to_file("res://levels/level_1.tscn")
 
 #when no button is pressed, will reload back to the start screen
 func _on_button_no_pressed() -> void:

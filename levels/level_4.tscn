@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://ck7dnlxkaso8n"]
+[gd_scene load_steps=10 format=4 uid="uid://ck7dnlxkaso8n"]
 
 [ext_resource type="Texture2D" uid="uid://c1yeho62inggb" path="res://assets/tileset1750x1750.png" id="1_yokl2"]
 [ext_resource type="PackedScene" uid="uid://cjmjm576tv8rh" path="res://scenes/player.tscn" id="2_wpt0k"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cqju0q84s1cwq" path="res://scenes/checkPoint.tscn" id="4_uhbdy"]
 [ext_resource type="PackedScene" uid="uid://ceogtust8xhiy" path="res://scenes/coin.tscn" id="5_va0kj"]
 [ext_resource type="PackedScene" uid="uid://dt4tkww2mpq47" path="res://scenes/goose.tscn" id="6_438iu"]
+[ext_resource type="Texture2D" uid="uid://eo46ejnsbjaq" path="res://assets/Level Graphics/TreeLevelBackdrop.png" id="7_tvjku"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xnyrd"]
 texture = ExtResource("1_yokl2")
@@ -76,13 +77,13 @@ tile_map_data = PackedByteArray("AAD8/wAAAAAAAAEAAAD8/wEAAAAAAAIAAAD8/wIAAAAAAAM
 tile_set = SubResource("TileSet_cdams")
 
 [node name="Player" parent="." instance=ExtResource("2_wpt0k")]
-position = Vector2(-633, -119)
+position = Vector2(200, -137)
 
 [node name="Camera" type="Camera2D" parent="Player"]
 position = Vector2(0, -0.25)
-zoom = Vector2(0.5, 0.5)
-limit_left = -2350
-limit_right = 24750
+zoom = Vector2(0.33, 0.33)
+limit_left = -1000
+limit_right = 4250
 limit_bottom = 500
 drag_vertical_enabled = true
 
@@ -159,3 +160,14 @@ position = Vector2(-14, -9429)
 
 [node name="Goose5" parent="Enemies" instance=ExtResource("6_438iu")]
 position = Vector2(2895, -11081)
+
+[node name="Background" type="Parallax2D" parent="."]
+modulate = Color(0.772549, 0.756863, 0.698039, 1)
+repeat_size = Vector2(0, 6775)
+repeat_times = 3
+
+[node name="TreeLevelBackdrop" type="Sprite2D" parent="Background"]
+z_index = -1
+position = Vector2(1239, -8269)
+scale = Vector2(1.1628, 1.1628)
+texture = ExtResource("7_tvjku")
