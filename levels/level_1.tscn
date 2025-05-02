@@ -168,6 +168,7 @@ script = SubResource("GDScript_bgfg4")
 [node name="checkPoint" parent="PopUps" instance=ExtResource("6_7yvk6")]
 position = Vector2(23516, -1336)
 script = SubResource("GDScript_580oy")
+scene_path = "res://levels/level_2.tscn"
 
 [node name="Coins" type="Node" parent="."]
 
