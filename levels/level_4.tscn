@@ -92,7 +92,7 @@ drag_vertical_enabled = true
 [node name="PopUps" type="Node" parent="."]
 
 [node name="checkPoint" parent="PopUps" instance=ExtResource("4_uhbdy")]
-position = Vector2(1403, -12208)
+position = Vector2(1181, -12178)
 scene_path = "res://levels/boss_level.tscn"
 
 [node name="Coins" type="Node" parent="."]

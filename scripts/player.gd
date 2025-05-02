@@ -20,8 +20,8 @@ var knocked_back = false
 
 
 func _process(delta):
-	$"Health".text= "Health: " + str(GameManager.health)
-	$"Coins".text = str(GameManager.coins)
+	%Health.text= str(GameManager.health)
+	%Coins.text = str(GameManager.coins)
 	
 func _physics_process(delta: float) -> void:
 	if not GameManager.is_paused:

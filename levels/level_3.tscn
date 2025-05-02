@@ -93,7 +93,8 @@ drag_vertical_enabled = true
 [node name="PopUps" type="Node" parent="."]
 
 [node name="checkPoint" parent="PopUps" instance=ExtResource("4_j208j")]
-position = Vector2(5695, -912)
+z_index = -1
+position = Vector2(5540, -923)
 scene_path = "res://levels/level_4.tscn"
 
 [node name="Coins" type="Node" parent="."]
@@ -161,7 +162,7 @@ scale = Vector2(5, 5)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Goose" parent="Enemies" instance=ExtResource("6_3f43k")]
-position = Vector2(5734, -1617)
+position = Vector2(5680, -1638)
 
 [node name="Goose2" parent="Enemies" instance=ExtResource("6_3f43k")]
 position = Vector2(5682, 372)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqju0q84s1cwq"]
+[gd_scene load_steps=4 format=3 uid="uid://cqju0q84s1cwq"]
 
 [ext_resource type="Script" path="res://scripts/checkPoint.gd" id="1_0glbh"]
+[ext_resource type="Texture2D" path="res://assets/Level Graphics/door.png" id="2_dd1bk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4h4e"]
-size = Vector2(109, 112)
+size = Vector2(341.75, 355.938)
 
 [node name="checkPoint" type="Area2D"]
 collision_layer = 4
@@ -11,7 +12,13 @@ collision_mask = 2
 script = ExtResource("1_0glbh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(176, 3)
 shape = SubResource("RectangleShape2D_h4h4e")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(177, 4)
+scale = Vector2(1.01857, 1.01857)
+texture = ExtResource("2_dd1bk")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
