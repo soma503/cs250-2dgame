@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7bh52dkahea2"]
+
+[ext_resource type="Script" path="res://scripts/death_water.gd" id="1_l8mpn"]
+[ext_resource type="Texture2D" uid="uid://dkkc8puobksy3" path="res://assets/Level Graphics/deathWater.png" id="2_uimtp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyal0"]
+size = Vector2(4998, 425.75)
+
+[node name="DeathWater" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_l8mpn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 39.125)
+shape = SubResource("RectangleShape2D_qyal0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uimtp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
