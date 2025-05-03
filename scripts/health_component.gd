@@ -15,3 +15,6 @@ func damage(attack: Attack):
 	GameManager.health = health
 	if hit_flash:
 		hit_flash.play("hit_flash")
+	
+	if GameManager.health < 0:
+		GameManager.health = 0
