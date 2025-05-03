@@ -17,11 +17,15 @@ var direction: Vector2 = Vector2.ZERO
 var has_double_jump = true
 var dash_duration = 0.2	
 var knocked_back = false
+var is_alive = true
+
 
 
 func _process(delta):
 	%Health.text= str(GameManager.health)
 	%Coins.text = str(GameManager.coins)
+	
+
 	
 func _physics_process(delta: float) -> void:
 	if not GameManager.is_paused:
@@ -38,6 +42,8 @@ func _physics_process(delta: float) -> void:
 			apply_friction(input_axis, delta)
 			apply_air_resistance(input_axis, delta)
 			
+			
+		
 		move_and_slide()
 		handle_animation(input_axis)
 
@@ -108,7 +114,13 @@ func get_sign(number):
 	else:
 		return -1
 
+func dies():
+	is_alive = false
+	animated_sprite.play("death")
+	
 func handle_animation(input_axis):
+	if not is_alive:
+		return
 	if input_axis != 0:
 		animated_sprite.flip_h = (input_axis < 0) #this sets the way sprite is facing
 		animated_sprite.play("running")
@@ -116,5 +128,3 @@ func handle_animation(input_axis):
 		animated_sprite.play("idle") 
 	if not is_on_floor():
 		animated_sprite.play("jumping")
-		
-		

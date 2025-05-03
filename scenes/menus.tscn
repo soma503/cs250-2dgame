@@ -75,6 +75,10 @@ clip_text = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="Timer" type="Timer" parent="deathMenu" groups=["Player"]]
+unique_name_in_owner = true
+one_shot = true
+
 [node name="pauseMenu" type="CanvasLayer" parent="."]
 visible = false
 script = ExtResource("6_hbku4")
@@ -151,6 +155,7 @@ expand_icon = true
 
 [connection signal="pressed" from="deathMenu/Retry" to="deathMenu" method="_on_retry_pressed"]
 [connection signal="pressed" from="deathMenu/Quit" to="deathMenu" method="_on_quit_pressed"]
+[connection signal="timeout" from="deathMenu/Timer" to="deathMenu" method="_on_timer_timeout"]
 [connection signal="pressed" from="pauseMenu/Resume" to="pauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="pauseMenu/Retry" to="pauseMenu" method="_on_retry_pressed"]
 [connection signal="pressed" from="pauseMenu/Quit" to="pauseMenu" method="_on_quit_pressed"]

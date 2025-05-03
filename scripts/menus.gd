@@ -12,6 +12,6 @@ func pause():
 func _process(delta):
 	if Input.is_action_pressed("menu"):
 		pause()
-	elif GameManager.health <= 0:
+	elif GameManager.health <= 0 && not get_node("deathMenu").dying:
 		died()
 	
