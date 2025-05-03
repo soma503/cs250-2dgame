@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://pqdopojvvp3x"]
+[gd_scene load_steps=35 format=3 uid="uid://pqdopojvvp3x"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_tgux8"]
 [ext_resource type="Texture2D" uid="uid://cm6axio0u18ee" path="res://assets/BossFlyingSpriteSheet.png" id="2_4b6gu"]
+[ext_resource type="Texture2D" uid="uid://bt5xyn2ubyaqh" path="res://assets/level_assets/deadGoose.png" id="2_6u14k"]
 [ext_resource type="Texture2D" uid="uid://b1r4bhd5674il" path="res://assets/DazedGooseAnimation.PNG" id="3_1gjoq"]
 
 [sub_resource type="Animation" id="Animation_rpwcf"]
@@ -57,6 +58,10 @@ _data = {
 "grow": SubResource("Animation_6eq64"),
 "shrink": SubResource("Animation_tkm40")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gbgp"]
+atlas = ExtResource("2_6u14k")
+region = Rect2(0, 0, 1000, 1250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na7ng"]
 atlas = ExtResource("2_4b6gu")
@@ -144,6 +149,14 @@ region = Rect2(2000, 2500, 1000, 1250)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qicji"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gbgp")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_na7ng")
@@ -270,8 +283,7 @@ libraries = {
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.50002, 1.49999)
 sprite_frames = SubResource("SpriteFrames_qicji")
-animation = &"flying"
-frame_progress = 0.383927
+animation = &"dead"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2(2.7, 3.2)

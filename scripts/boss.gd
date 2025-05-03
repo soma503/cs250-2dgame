@@ -73,8 +73,9 @@ func _physics_process(delta: float) -> void:
 					curr_phase = phase.BEATEN
 					
 			phase.BEATEN:
-				animations.play("shrink")
+				#animations.play("shrink")
 				await get_tree().create_timer(3).timeout
+				sprite.play("dead")
 				# TODO make an ending :p
 
 func update_difficulty():

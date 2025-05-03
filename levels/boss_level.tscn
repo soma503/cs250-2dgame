@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dfh0bmo8bhjsj"]
+[gd_scene load_steps=14 format=4 uid="uid://dfh0bmo8bhjsj"]
 
 [ext_resource type="PackedScene" uid="uid://myg2mlperxc0" path="res://scenes/menus.tscn" id="1_hccjp"]
 [ext_resource type="Texture2D" uid="uid://c1yeho62inggb" path="res://assets/tileset1750x1750.png" id="1_l56eh"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://yyuy8h2pf4y2" path="res://scenes/feather_proj.tscn" id="4_sju78"]
 [ext_resource type="Texture2D" uid="uid://xdoqd26m083n" path="res://assets/level_assets/BossLevelTilesheet.png" id="5_kbmx2"]
 [ext_resource type="Texture2D" uid="uid://s0lxg27cvnel" path="res://assets/Level Graphics/BossLevelBackDrop.png" id="7_a5b76"]
+[ext_resource type="Script" path="res://scripts/golden_egg.gd" id="8_k5xbq"]
+[ext_resource type="Texture2D" uid="uid://bbt00ie0afn4i" path="res://assets/UI Graphics/GoldenEgg.png" id="9_hbtb5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0k78c"]
 texture = ExtResource("5_kbmx2")
@@ -129,6 +131,10 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_qvy18")
 sources/0 = SubResource("TileSetAtlasSource_0k78c")
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3gfom"]
+radius = 121.0
+height = 242.0
+
 [node name="BossLevel" type="Node2D"]
 
 [node name="menus" parent="." instance=ExtResource("1_hccjp")]
@@ -162,3 +168,20 @@ position = Vector2(1031, -2030)
 scale = Vector2(0.807467, 1.26221)
 texture = ExtResource("7_a5b76")
 metadata/_edit_lock_ = true
+
+[node name="GoldenEgg" type="Area2D" parent="."]
+z_index = -1
+position = Vector2(-36, 0)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("8_k5xbq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoldenEgg"]
+position = Vector2(2255, -124)
+shape = SubResource("CapsuleShape2D_3gfom")
+
+[node name="Sprite2D" type="Sprite2D" parent="GoldenEgg"]
+position = Vector2(2255, -119)
+texture = ExtResource("9_hbtb5")
+
+[connection signal="body_entered" from="GoldenEgg" to="GoldenEgg" method="_on_body_entered"]
