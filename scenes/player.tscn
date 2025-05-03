@@ -425,7 +425,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ci5j7")
 }, {
-"duration": 1.0,
+"duration": 100000.0,
 "texture": SubResource("AtlasTexture_w82e1")
 }],
 "loop": false,
@@ -433,7 +433,7 @@ animations = [{
 "speed": 15.0
 }, {
 "frames": [{
-"duration": 30.0,
+"duration": 60.0,
 "texture": SubResource("AtlasTexture_5s133")
 }, {
 "duration": 1.0,
@@ -689,7 +689,7 @@ material = SubResource("ShaderMaterial_t281o")
 position = Vector2(-0.95342, -5.17553)
 scale = Vector2(0.335628, 0.264153)
 sprite_frames = SubResource("SpriteFrames_hb6sx")
-animation = &"death"
+animation = &"idle"
 
 [node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")

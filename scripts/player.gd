@@ -18,6 +18,7 @@ var has_double_jump = true
 var dash_duration = 0.2	
 var knocked_back = false
 var is_alive = true
+var animationDone = false
 
 
 
