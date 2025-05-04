@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c4vly421o5l38"]
+[gd_scene load_steps=17 format=4 uid="uid://c4vly421o5l38"]
 
 [ext_resource type="Texture2D" uid="uid://c1yeho62inggb" path="res://assets/tileset1750x1750.png" id="1_ps8k5"]
 [ext_resource type="PackedScene" uid="uid://cjmjm576tv8rh" path="res://scenes/player.tscn" id="2_ue81l"]
@@ -109,6 +109,42 @@ func _on_body_entered(body: Node2D) -> void:
 	get_node(\"CanvasLayer\").dashInstruct()
 "
 
+[sub_resource type="GDScript" id="GDScript_n8f33"]
+resource_local_to_scene = true
+script/source = "extends Node
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	#print(\"pop1\")
+	get_node(\"CanvasLayer\").doubleInstruct()
+"
+
+[sub_resource type="GDScript" id="GDScript_2domw"]
+resource_local_to_scene = true
+script/source = "extends Node
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_body_entered(body: Node2D) -> void:
+	#print(\"pop1\")
+	get_node(\"CanvasLayer\").wallInstruct()
+"
+
 [node name="Level1" type="Node2D"]
 
 [node name="lvloneplatform" type="TileMapLayer" parent="."]
@@ -149,11 +185,29 @@ z_index = -1
 position = Vector2(22956, -1425)
 scene_path = "res://levels/level_2.tscn"
 
+[node name="popUps4" parent="PopUps" instance=ExtResource("5_prf4f")]
+position = Vector2(9711, -1095)
+script = SubResource("GDScript_n8f33")
+
+[node name="popUps5" parent="PopUps" instance=ExtResource("5_prf4f")]
+position = Vector2(16447, -1853)
+script = SubResource("GDScript_2domw")
+
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
 z_index = 10
 position = Vector2(1411, -79.0001)
+scale = Vector2(5, 5)
+
+[node name="Coin10" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(8993, -1496)
+scale = Vector2(5, 5)
+
+[node name="Coin11" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(9220, -1496)
 scale = Vector2(5, 5)
 
 [node name="Coin2" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
@@ -174,6 +228,76 @@ scale = Vector2(5, 5)
 [node name="Coin5" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
 z_index = 10
 position = Vector2(11541, -1865)
+scale = Vector2(5, 5)
+
+[node name="Coin12" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(12455, -2214)
+scale = Vector2(5, 5)
+
+[node name="Coin13" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(12697, -2061)
+scale = Vector2(5, 5)
+
+[node name="Coin14" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(12875, -1801)
+scale = Vector2(5, 5)
+
+[node name="Coin15" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(15578, -2057)
+scale = Vector2(5, 5)
+
+[node name="Coin16" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(15843, -2192)
+scale = Vector2(5, 5)
+
+[node name="Coin17" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(15439, -1833)
+scale = Vector2(5, 5)
+
+[node name="Coin18" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(19020, -1135)
+scale = Vector2(5, 5)
+
+[node name="Coin19" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(20353, -2297)
+scale = Vector2(5, 5)
+
+[node name="Coin20" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(20347, -2113)
+scale = Vector2(5, 5)
+
+[node name="Coin21" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(20487, -2202)
+scale = Vector2(5, 5)
+
+[node name="Coin22" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(20208, -2196)
+scale = Vector2(5, 5)
+
+[node name="Coin23" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(20999, -1627)
+scale = Vector2(5, 5)
+
+[node name="Coin24" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(22193, -1561)
+scale = Vector2(5, 5)
+
+[node name="Coin25" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]
+z_index = 10
+position = Vector2(22374, -1561)
 scale = Vector2(5, 5)
 
 [node name="Coin6" parent="Coins" groups=["Player"] instance=ExtResource("4_asfdp")]

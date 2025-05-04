@@ -104,6 +104,26 @@ z_index = 10
 position = Vector2(1124, -579)
 scale = Vector2(5, 5)
 
+[node name="Coin13" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(1376, -2149)
+scale = Vector2(5, 5)
+
+[node name="Coin14" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(1374, -2346)
+scale = Vector2(5, 5)
+
+[node name="Coin15" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(1255, -2246)
+scale = Vector2(5, 5)
+
+[node name="Coin16" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(1498, -2251)
+scale = Vector2(5, 5)
+
 [node name="Coin2" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
 z_index = 10
 position = Vector2(5758, -2875)
@@ -117,6 +137,36 @@ scale = Vector2(5, 5)
 [node name="Coin4" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
 z_index = 10
 position = Vector2(7511, -1348)
+scale = Vector2(5, 5)
+
+[node name="Coin17" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(10147, -2145)
+scale = Vector2(5, 5)
+
+[node name="Coin18" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(10147, -2331)
+scale = Vector2(5, 5)
+
+[node name="Coin19" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(10016, -2225)
+scale = Vector2(5, 5)
+
+[node name="Coin20" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(10279, -2221)
+scale = Vector2(5, 5)
+
+[node name="Coin21" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(9135, -1611)
+scale = Vector2(5, 5)
+
+[node name="Coin22" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]
+z_index = 10
+position = Vector2(2381, -1622)
 scale = Vector2(5, 5)
 
 [node name="Coin5" parent="Coins" groups=["Player"] instance=ExtResource("5_cyatl")]

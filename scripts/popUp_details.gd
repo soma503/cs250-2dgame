@@ -2,7 +2,7 @@ extends CanvasLayer
 @onready var canvas = %TextureRect2
 @onready var label = $Label
 @onready var timer = $Timer
-const DURATION = 2.0
+const DURATION = 4.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,11 +24,13 @@ func jumpInstruct():
 	
 func doubleInstruct():
 	timerStart()
-	label.text = ("Press JUMP twice \n to double jump")
+	canvas.texture = load("res://assets/UI Graphics/doubleJumpPopUp.png")
+	label.text = (" ")
 	
 func wallInstruct():
 	timerStart()
-	label.text = ("Jump wall to wall \n by pressing space")
+	canvas.texture = load("res://assets/UI Graphics/wallJumpPopUp.png")
+	label.text = (" ")
 	
 func dashInstruct():
 	timerStart()
