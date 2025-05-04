@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://dt4tkww2mpq47"]
+[gd_scene load_steps=26 format=3 uid="uid://dt4tkww2mpq47"]
 
 [ext_resource type="Script" path="res://scripts/goose.gd" id="1_tmdv4"]
 [ext_resource type="Texture2D" uid="uid://cku5ityc67pna" path="res://assets/goose_aggro.png" id="2_v2jn4"]
 [ext_resource type="Texture2D" uid="uid://ba4bmipxqv748" path="res://assets/goose_walk.png" id="2_vcxuq"]
+[ext_resource type="AudioStream" uid="uid://uuleepiu8g2g" path="res://assets/audio/effects/GooseHonk.mp3" id="4_qfcgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yqte"]
 atlas = ExtResource("2_v2jn4")
@@ -189,8 +190,15 @@ target_position = Vector2(0, 1)
 position = Vector2(83, 116)
 target_position = Vector2(0, 1)
 
+[node name="GooseSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qfcgy")
+
+[node name="SoundTimer" type="Timer" parent="GooseSoundPlayer"]
+autostart = true
+
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
 [connection signal="timeout" from="AttackArea/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="GooseSoundPlayer/SoundTimer" to="." method="_on_sound_timer_timeout"]

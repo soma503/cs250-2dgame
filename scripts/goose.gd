@@ -20,6 +20,8 @@ var damage = 1
 var can_attack = false
 var count = 0
 var ledge_side = ledge.RIGHT
+var sound_cooldown = 5
+var rand = RandomNumberGenerator.new()
 
 
 @onready var rand_timer = $RandomMovementTimer  #prob not needed
@@ -27,8 +29,11 @@ var ledge_side = ledge.RIGHT
 @onready var right_ray = $ray_right
 @onready var attack_cooldown = $AttackArea/AttackCooldown
 @onready var animated_sprite = $Sprite2D
+@onready var sounds = $GooseSoundPlayer
+@onready var sound_timer = $GooseSoundPlayer/SoundTimer
 
 func _ready() -> void:
+	rand.seed = position.x
 	attack = Attack.new()
 	attack.attack_damage = damage
 
@@ -42,6 +47,7 @@ func _physics_process(delta: float) -> void:
 			handle_animations()
 			apply_gravity(delta)
 		
+		handle_sfx()
 		handle_attack()
 		move_and_slide()
 
@@ -50,6 +56,12 @@ func _physics_process(delta: float) -> void:
 func patrol():
 	update_direction_for_patrol()
 	velocity.x = PATROL_SPEED * dir.x
+		
+func handle_sfx():
+	if sees_player:
+		sound_timer.wait_time = 1
+	else:
+		sound_timer.wait_time = 3
 		
 
 # update_direction_from_ledge
@@ -159,3 +171,13 @@ func handle_animations():
 		else:
 			animated_sprite.flip_h = true
 			animated_sprite.play("aggro")
+
+
+func _on_sound_timer_timeout() -> void:
+	if not sees_player:
+		print("Squak")
+		var n = rand.randf_range(0, 10)
+		if n <= 2:
+			sounds.play()
+	else:
+		sounds.play()

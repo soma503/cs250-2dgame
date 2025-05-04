@@ -24,9 +24,10 @@ enum height {
 @onready var attack_cooldown = $AttackCooldown
 @onready var phase_timer = $PhaseTimer
 @onready var stunned_timer = $StunnedTimer
-@onready var stomped_timer = $StompedCooldown
+@onready var stomped_timer = $StompedTimer
 @onready var animations = $AnimationPlayer
 @onready var sprite = $Sprite2D
+@onready var sounds = $BossSoundsPlayer
 
 var dir : Vector2
 var initial_position : Vector2
@@ -76,8 +77,10 @@ func _physics_process(delta: float) -> void:
 			phase.BEATEN:
 				if not is_on_floor():
 					velocity.y += GameManager.gravity * delta
+					print('on floor')
 				else:
 					sprite.play("dead")
+				
 				move_and_slide()
 
 
@@ -137,6 +140,7 @@ func _on_detect_area_body_exited(body: Node2D) -> void:
 		
 func _on_stomp_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group('Player') and (curr_phase == phase.STUNNED):
+		sounds.play_short_honk()
 		handle_stomped()
 		
 		if boss_health > 0:
@@ -154,6 +158,7 @@ func _on_stunned_timer_timeout() -> void:
 		curr_phase = phase.FIGHT
 
 func _on_phase_timer_timeout() -> void:
+	sounds.play_long_honk()
 	stunned_timer.start()
 	print("in stunned phase")
 	curr_phase = phase.STUNNED
