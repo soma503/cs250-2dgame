@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cm6axio0u18ee" path="res://assets/BossFlyingSpriteSheet.png" id="2_4b6gu"]
 [ext_resource type="Texture2D" uid="uid://bt5xyn2ubyaqh" path="res://assets/level_assets/deadGoose.png" id="2_6u14k"]
 [ext_resource type="Texture2D" uid="uid://b1r4bhd5674il" path="res://assets/DazedGooseAnimation.PNG" id="3_1gjoq"]
-[ext_resource type="Script" path="res://scenes/boss_sounds_player.gd" id="6_ku8d4"]
+[ext_resource type="Script" path="res://scripts/boss_sounds_player.gd" id="6_ku8d4"]
 
 [sub_resource type="Animation" id="Animation_rpwcf"]
 length = 0.001

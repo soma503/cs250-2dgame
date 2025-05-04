@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 					
 			phase.BEATEN:
 				if not is_on_floor():
-					velocity.y += GameManager.gravity * delta
+					velocity.y += 2000 * delta
 					print('on floor')
 				else:
 					sprite.play("dead")
