@@ -80,6 +80,7 @@ func _physics_process(delta: float) -> void:
 					sprite.play("dead")
 				move_and_slide()
 
+
 func update_difficulty():
 	attack_cooldown.wait_time -= 1
 	phase_duration -= 3
