@@ -7,6 +7,8 @@ var n = 1
 
 #makes only the starting screen visible when played
 func _ready() -> void:
+	Bgm.play_music_level()
+	
 	%CanvasLayer.visible = true
 	%TextureRect.visible = false
 	%DecisionScreen.visible = false

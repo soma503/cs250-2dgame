@@ -41,6 +41,7 @@ var stunned_duration = 5
 var stomp_count = 0
 
 func _ready() -> void:
+	Bgm.play_boss_music()
 	initial_position = position
 	phase_timer.wait_time = phase_duration
 	stunned_timer.wait_time = stunned_duration
@@ -73,13 +74,15 @@ func _physics_process(delta: float) -> void:
 					curr_phase = phase.BEATEN
 					
 			phase.BEATEN:
-				#animations.play("shrink")
-				await get_tree().create_timer(3).timeout
-				sprite.play("dead")
-				# TODO make an ending :p
+				if not is_on_floor():
+					velocity.y += GameManager.gravity * delta
+				else:
+					sprite.play("dead")
+				move_and_slide()
 
 func update_difficulty():
 	attack_cooldown.wait_time -= 1
+	phase_duration -= 3
 
 func handle_movement():
 	if (curr_height == height.TOP) and (dir.y > 0):

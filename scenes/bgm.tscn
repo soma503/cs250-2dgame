@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cobl0vhnu4j56"]
+
+[ext_resource type="Script" path="res://scripts/bgm.gd" id="1_l7iyw"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+script = ExtResource("1_l7iyw")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

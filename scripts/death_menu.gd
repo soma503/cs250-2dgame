@@ -1,7 +1,7 @@
 extends CanvasLayer
 ##var can_move = true
 @onready var timer = $Timer
-const duration = 2.5
+const duration = 1
 var dying = false
 
 func _ready():

@@ -4,7 +4,7 @@ const JUMP_VELOCITY = -400.0
 const PATROL_SPEED = 300.0
 const AGGRO_SPEED = 600.0
 
-enum ledge {
+enum ledge {	
 	NONE,
 	LEFT,
 	RIGHT,

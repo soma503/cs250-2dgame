@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ck6ouans1ten5"
+path="res://.godot/imported/100 Get on the Bus.mp3-71c66abda6afcd71c6a2ab90235d817f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/100 Get on the Bus.mp3"
+dest_files=["res://.godot/imported/100 Get on the Bus.mp3-71c66abda6afcd71c6a2ab90235d817f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

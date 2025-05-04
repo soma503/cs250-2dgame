@@ -77,6 +77,7 @@ expand_icon = true
 
 [node name="Timer" type="Timer" parent="deathMenu" groups=["Player"]]
 unique_name_in_owner = true
+wait_time = 0.5
 one_shot = true
 
 [node name="pauseMenu" type="CanvasLayer" parent="."]
