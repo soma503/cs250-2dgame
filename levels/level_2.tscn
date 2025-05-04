@@ -103,7 +103,8 @@ position = Vector2(19486, -1416)
 scene_path = "res://levels/level_3.tscn"
 
 [node name="DeathWater" parent="PopUps" instance=ExtResource("7_5ibxb")]
-position = Vector2(6750, 14)
+z_index = -1
+position = Vector2(6751, 4)
 
 [node name="DeathWater2" parent="PopUps" instance=ExtResource("7_5ibxb")]
 z_index = -2
