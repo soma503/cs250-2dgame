@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://cjmjm576tv8rh"]
+[gd_scene load_steps=105 format=3 uid="uid://cjmjm576tv8rh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0eovg"]
 [ext_resource type="PackedScene" uid="uid://bwnlwm7b72hj" path="res://scenes/dash.tscn" id="2_bnniu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/hit_flash_animation_player.gd" id="8_3lt8e"]
 [ext_resource type="Script" path="res://scripts/health_component.gd" id="8_5701x"]
 [ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="9_vrjkj"]
+[ext_resource type="AudioStream" uid="uid://cjtrbdkvew2uy" path="res://assets/audio/effects/shadowHit.wav" id="10_mn1ls"]
 [ext_resource type="FontFile" uid="uid://dg0bdmkfq8uqx" path="res://assets/Dangrek-Regular.ttf" id="11_m3srb"]
 [ext_resource type="Texture2D" uid="uid://cd6eulr8qyobr" path="res://assets/UI Graphics/coin (2).png" id="12_c1bo1"]
 [ext_resource type="Texture2D" uid="uid://diwp445lx6sr7" path="res://assets/UI Graphics/heart.png" id="13_arnel"]
@@ -622,7 +623,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"running",
-"speed": 15.0
+"speed": 20.0
 }]
 
 [sub_resource type="Animation" id="Animation_4pgnt"]
@@ -689,7 +690,7 @@ material = SubResource("ShaderMaterial_t281o")
 position = Vector2(-0.95342, -5.17553)
 scale = Vector2(0.335628, 0.264153)
 sprite_frames = SubResource("SpriteFrames_hb6sx")
-animation = &"idle"
+animation = &"running"
 
 [node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -698,9 +699,13 @@ libraries = {
 }
 script = ExtResource("8_3lt8e")
 
-[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("hit_flash")]
+[node name="HurtSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_mn1ls")
+
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("hit_flash", "hit_sfx")]
 script = ExtResource("8_5701x")
 hit_flash = NodePath("../HitFlashAnimationPlayer")
+hit_sfx = NodePath("../HurtSfx")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("9_vrjkj")

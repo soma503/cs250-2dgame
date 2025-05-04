@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		
 		var input_axis = Input.get_axis("left", "right")
 		
-		if not knocked_back:
+		if not knocked_back or not is_alive:
 			handle_jump()
 			handle_wall_jump()
 			handle_dash()
@@ -42,8 +42,6 @@ func _physics_process(delta: float) -> void:
 			handle_air_acceleration(input_axis, delta)
 			apply_friction(input_axis, delta)
 			apply_air_resistance(input_axis, delta)
-			
-			
 		
 		move_and_slide()
 		handle_animation(input_axis)

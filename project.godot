@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
+Bgm="*res://scenes/bgm.tscn"
 
 [display]
 
@@ -30,7 +31,7 @@ project/assembly_name="gameV1"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
 
 [global_group]
 
