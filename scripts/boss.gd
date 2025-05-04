@@ -76,7 +76,7 @@ func _physics_process(delta: float) -> void:
 				#animations.play("shrink")
 				await get_tree().create_timer(3).timeout
 				sprite.play("dead")
-				get_tree().change_scene_to_file("res://scenes/end_scene.tscn")
+				
 				# TODO make an ending :p
 
 func update_difficulty():
