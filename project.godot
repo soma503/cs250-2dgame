@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="gameV1"
+config/name="Cake Game"
+config/description="A 2D platformer
+"
 run/main_scene="res://levels/startScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
